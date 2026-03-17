@@ -1,0 +1,9 @@
+<svg width="320" height="72" viewBox="0 0 320 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="72" rx="16" fill="#F8FAFC"/>
+  <rect x="18" y="16" width="40" height="40" rx="12" fill="#1D4ED8"/>
+  <path d="M28 29C28 27.3431 29.3431 26 31 26H45C46.6569 26 48 27.3431 48 29V41C48 42.6569 46.6569 44 45 44H31C29.3431 44 28 42.6569 28 41V29Z" fill="white"/>
+  <circle cx="33.5" cy="46.5" r="3.5" fill="white"/>
+  <circle cx="42.5" cy="46.5" r="3.5" fill="white"/>
+  <text x="74" y="32" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Rail Coach Factory</text>
+  <text x="74" y="50" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="500">Railway manufacturing customer</text>
+</svg>

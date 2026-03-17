@@ -1,0 +1,7 @@
+<svg width="320" height="72" viewBox="0 0 320 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="72" rx="16" fill="#F8FAFC"/>
+  <rect x="18" y="16" width="40" height="40" rx="12" fill="#0F172A"/>
+  <path d="M38 24L41.7082 31.5147L50 32.7202L44 38.565L45.4164 46.82L38 42.92L30.5836 46.82L32 38.565L26 32.7202L34.2918 31.5147L38 24Z" fill="white"/>
+  <text x="74" y="32" fill="#0F172A" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Ordnance Factory</text>
+  <text x="74" y="50" fill="#475569" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="500">Defence manufacturing customer</text>
+</svg>
