@@ -104,7 +104,7 @@ export default function HomePage() {
               <span>Global Export Supply</span>
             </div>
 
-            <h1 className="hero-fade-up hero-fade-up-delay-1 mt-6 max-w-3xl text-5xl font-semibold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+            <h1 className="hero-fade-up hero-fade-up-delay-1 mt-8 max-w-3xl text-5xl font-semibold leading-tight tracking-tight md:text-6xl lg:text-7xl">
               Precision Automotive Components Built for Reliable Supply
             </h1>
 
@@ -241,6 +241,15 @@ export default function HomePage() {
               </p>
             </div>
 
+            <div>
+              <Link
+                href="/about"
+                className="inline-flex items-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-medium text-slate-900 transition hover:border-slate-900 hover:bg-slate-50"
+              >
+                Learn More
+              </Link>
+            </div>
+
             <div className="grid gap-4 sm:grid-cols-3">
               {aboutHighlights.map((item) => {
                 const Icon = item.icon;
@@ -357,6 +366,15 @@ export default function HomePage() {
               From documented operating practices to continuous improvement habits, the emphasis is
               on reducing execution risk and supporting dependable component supply over time.
             </p>
+
+            <div>
+              <Link
+                href="/quality"
+                className="inline-flex items-center rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+              >
+                Learn About Quality
+              </Link>
+            </div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
