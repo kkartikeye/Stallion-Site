@@ -1,4 +1,4 @@
-import { Mail, MapPin, PhoneCall } from "lucide-react";
+import { Building2, FileBadge2, Mail, MapPin, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import { ContactForm } from "@/components/contact-form";
 import { siteConfig } from "@/lib/site";
@@ -92,7 +92,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               <div className="mt-6 space-y-5 text-slate-700">
                 <div className="flex items-start gap-4">
                   <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-900">
-                    <MapPin className="h-4 w-4" strokeWidth={1.8} />
+                    <Building2 className="h-4 w-4" strokeWidth={1.8} />
                   </div>
                   <div>
                     <div className="text-sm text-slate-500">Company</div>
@@ -102,7 +102,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
                 <div className="flex items-start gap-4">
                   <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-900">
-                    <Mail className="h-4 w-4" strokeWidth={1.8} />
+                    <FileBadge2 className="h-4 w-4" strokeWidth={1.8} />
                   </div>
                   <div>
                     <div className="text-sm text-slate-500">GST Number</div>
