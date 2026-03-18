@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { productFamilies } from "@/lib/product-families";
+import { getProductSlug, productFamilies } from "@/lib/product-families";
 import { siteConfig } from "@/lib/site";
 
 const staticRoutes = [
@@ -27,5 +27,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
+    ...productFamilies.flatMap((family) =>
+      family.details.map((product) => ({
+        url: new URL(
+          `/products/${family.slug}/${getProductSlug(product.name)}`,
+          siteConfig.url,
+        ).toString(),
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
+    ),
   ];
 }

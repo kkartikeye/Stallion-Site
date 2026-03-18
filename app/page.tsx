@@ -103,9 +103,9 @@ export default function HomePage() {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
         </div>
 
-        <div className="container-site relative grid min-h-[78vh] gap-12 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="container-site relative grid gap-10 py-16 sm:py-20 lg:min-h-[78vh] lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-24">
           <div>
-            <div className="hero-fade-up inline-flex items-center gap-4 rounded-full border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold tracking-wide text-slate-200 backdrop-blur-sm">
+            <div className="hero-fade-up inline-flex flex-wrap items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-sm font-semibold tracking-wide text-slate-200 backdrop-blur-sm sm:gap-4 sm:px-6 sm:py-3 sm:text-base">
               <span>OEM Manufacturing</span>
               <span className="text-slate-400">•</span>
               <span>Precision Machining</span>
@@ -113,52 +113,37 @@ export default function HomePage() {
               <span>Global Export Supply</span>
             </div>
 
-            <h1 className="hero-fade-up hero-fade-up-delay-1 mt-8 max-w-3xl text-5xl font-semibold leading-tight tracking-tight md:text-6xl lg:text-7xl">
+            <h1 className="hero-fade-up hero-fade-up-delay-1 mt-6 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:mt-8 sm:text-5xl md:text-6xl lg:text-7xl">
               Precision Automotive Components Built for Reliable Supply
             </h1>
 
-            <p className="hero-fade-up hero-fade-up-delay-2 mt-6 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
+            <p className="hero-fade-up hero-fade-up-delay-2 mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:mt-6 sm:text-lg md:text-xl md:leading-8">
               Stallion Auto Parts manufactures precision-machined and fabricated
               automotive components for OEMs, industrial buyers, and export
               customers who need dependable quality and responsive manufacturing.
             </p>
 
-            <div className="hero-fade-up hero-fade-up-delay-3 mt-10 flex flex-wrap gap-4">
+            <div className="hero-fade-up hero-fade-up-delay-3 mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
               <Link
                 href="/contact"
-                className="rounded-xl bg-white px-6 py-3 text-base font-semibold text-slate-900 transition hover:-translate-y-0.5"
+                className="rounded-xl bg-white px-6 py-3 text-center text-base font-semibold text-slate-900 transition hover:-translate-y-0.5"
               >
                 Request a Quote
               </Link>
 
               <Link
                 href="/capabilities"
-                className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-base font-medium text-white transition hover:bg-white/10"
+                className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-center text-base font-medium text-white transition hover:bg-white/10"
               >
                 View Capabilities
               </Link>
             </div>
-
-            <div className="hero-fade-up hero-fade-up-delay-4 mt-10 flex flex-wrap gap-3 text-sm font-medium text-slate-300">
-              {[
-                "1995 established",
-                "3,200 m² footprint",
-                "OEM and export support",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 backdrop-blur-sm"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="relative mx-auto w-full max-w-[640px]">
-            <div className="hero-glow absolute -inset-5 rounded-[2.5rem] bg-gradient-to-br from-sky-400/12 via-transparent to-white/5 blur-2xl" />
-            <div className="hero-float absolute -right-6 -top-8 h-28 w-28 rounded-full border border-white/10 bg-white/[0.04] blur-sm" />
-            <div className="hero-fade-up hero-fade-up-delay-3 relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.06] p-4 shadow-[0_30px_90px_rgba(2,6,23,0.6)] backdrop-blur-xl sm:p-5">
+            <div className="hero-glow absolute -inset-3 hidden rounded-[2.5rem] bg-gradient-to-br from-sky-400/12 via-transparent to-white/5 blur-2xl sm:block sm:-inset-5" />
+            <div className="hero-float absolute -right-4 -top-5 hidden h-20 w-20 rounded-full border border-white/10 bg-white/[0.04] blur-sm sm:block sm:h-28 sm:w-28 sm:-right-6 sm:-top-8" />
+            <div className="hero-fade-up hero-fade-up-delay-3 relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-3 shadow-[0_30px_90px_rgba(2,6,23,0.6)] backdrop-blur-xl sm:rounded-[2rem] sm:p-5">
               <div className="relative mb-5 overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-900/40">
                 <div className="relative aspect-[16/10]">
                   <Image
@@ -168,10 +153,10 @@ export default function HomePage() {
                     className="hero-image-pan object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
-                  <div className="absolute left-4 top-4 inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
+                  <div className="absolute left-3 top-3 inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-100 backdrop-blur-sm sm:left-4 sm:top-4 sm:px-4 sm:text-[11px] sm:tracking-[0.18em]">
                     Machine Shop
                   </div>
-                  <div className="absolute bottom-4 right-4 rounded-2xl border border-white/10 bg-slate-950/65 px-4 py-3 text-right backdrop-blur-sm">
+                  <div className="absolute bottom-3 right-3 rounded-2xl border border-white/10 bg-slate-950/65 px-3 py-2.5 text-right backdrop-blur-sm sm:bottom-4 sm:right-4 sm:px-4 sm:py-3">
                     <div className="text-[10px] font-medium uppercase tracking-[0.22em] text-slate-400">
                       Capability Base
                     </div>

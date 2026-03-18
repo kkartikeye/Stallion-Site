@@ -13,7 +13,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
     return (
       <section className="section-space">
         <div className="container-site">
-          <div className="relative overflow-hidden rounded-[2rem] bg-slate-950 px-8 py-10 text-white md:px-10">
+          <div className="relative overflow-hidden rounded-[1.6rem] bg-slate-950 px-5 py-8 text-white sm:rounded-[2rem] sm:px-8 sm:py-10 md:px-10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(148,163,184,0.15),_transparent_30%)]" />
 
             <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
@@ -21,10 +21,10 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                 <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
                   Get Started
                 </p>
-                <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
                   Start with an RFQ, sourcing requirement, or capability discussion.
                 </h2>
-                <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
                   Share your requirement and we will help move the conversation toward feasibility,
                   quoting, or production support.
                 </p>
@@ -68,26 +68,26 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
   return (
     <section className="section-space">
       <div className="container-site">
-        <div className="relative overflow-hidden rounded-[2rem] bg-slate-950 px-8 py-12 text-white md:px-12 md:py-14">
+        <div className="relative overflow-hidden rounded-[1.6rem] bg-slate-950 px-5 py-8 text-white sm:rounded-[2rem] sm:px-8 sm:py-10 md:px-12 md:py-14">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(148,163,184,0.18),_transparent_32%),radial-gradient(circle_at_bottom_right,_rgba(255,255,255,0.08),_transparent_28%)]" />
 
-          <div className="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+          <div className="relative grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-10">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
                 Get Started
               </p>
-              <h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight md:text-5xl">
+              <h2 className="mt-3 max-w-3xl text-2xl font-semibold tracking-tight sm:text-3xl md:text-5xl">
                 Start the conversation with an RFQ, sourcing requirement, or capability discussion.
               </h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
                 Share your component requirement, target volumes, or program context and we will
                 respond with the right next step for quoting, feasibility, or manufacturing fit.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5"
+                  className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 sm:justify-start"
                 >
                   Request a Quote
                   <ArrowRight className="h-4 w-4" />
@@ -95,7 +95,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
 
                 <Link
                   href="/capabilities"
-                  className="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+                  className="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-center text-sm font-medium text-white transition hover:bg-white/10"
                 >
                   Review Capabilities
                 </Link>
@@ -109,7 +109,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
             </div>
 
             <div className="grid gap-4">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6">
                 <div className="text-sm font-medium uppercase tracking-[0.16em] text-slate-400">
                   Why buyers reach out
                 </div>
@@ -130,7 +130,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6">
                 <div className="flex items-start gap-4">
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-white">
                     <PhoneCall className="h-5 w-5" />
@@ -149,7 +149,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5 sm:p-6">
                 <div className="flex items-start gap-4">
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-white">
                     <Mail className="h-5 w-5" />
@@ -168,7 +168,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm leading-7 text-slate-300">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-5 text-sm leading-7 text-slate-300 sm:p-6">
                 Early conversations can start with a simple product photo, drawing, or volume
                 estimate. We can take it forward from there.
               </div>

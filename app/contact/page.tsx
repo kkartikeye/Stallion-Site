@@ -79,23 +79,6 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                 Review Product Families
               </Link>
             </div>
-
-            <div className="hero-fade-up hero-fade-up-delay-4 mt-8 space-y-4">
-              <div className="h-px w-24 bg-gradient-to-r from-sky-300/70 to-transparent" />
-              <div className="inline-flex flex-wrap items-center gap-3 rounded-[1.35rem] border border-white/10 bg-white/[0.045] px-4 py-4 backdrop-blur-sm">
-                <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/[0.08] text-slate-100">
-                  <MapPin className="h-4.5 w-4.5" strokeWidth={1.8} />
-                </div>
-                <div>
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-400">
-                    Headquarters
-                  </div>
-                  <div className="mt-1 text-base font-medium text-slate-100">
-                    Lucknow, India
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -107,39 +90,64 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               <h2 className="text-2xl font-semibold">Contact Information</h2>
 
               <div className="mt-6 space-y-5 text-slate-700">
-                <div>
-                  <div className="text-sm text-slate-500">Company</div>
-                  <div className="font-medium">Stallion Auto Parts Pvt. Ltd.</div>
+                <div className="flex items-start gap-4">
+                  <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-900">
+                    <MapPin className="h-4 w-4" strokeWidth={1.8} />
+                  </div>
+                  <div>
+                    <div className="text-sm text-slate-500">Company</div>
+                    <div className="font-medium">Stallion Auto Parts Pvt. Ltd.</div>
+                  </div>
                 </div>
 
-                <div>
-                  <div className="text-sm text-slate-500">GST Number</div>
-                  <div className="font-medium">{siteConfig.gstNumber}</div>
+                <div className="flex items-start gap-4">
+                  <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-900">
+                    <Mail className="h-4 w-4" strokeWidth={1.8} />
+                  </div>
+                  <div>
+                    <div className="text-sm text-slate-500">GST Number</div>
+                    <div className="font-medium">{siteConfig.gstNumber}</div>
+                  </div>
                 </div>
 
-                <div>
-                  <div className="text-sm text-slate-500">Address</div>
-                  <div>{siteConfig.address}</div>
+                <div className="flex items-start gap-4">
+                  <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-900">
+                    <MapPin className="h-4 w-4" strokeWidth={1.8} />
+                  </div>
+                  <div>
+                    <div className="text-sm text-slate-500">Address</div>
+                    <div>{siteConfig.address}</div>
+                  </div>
                 </div>
 
-                <div>
-                  <div className="text-sm text-slate-500">Phone</div>
-                  <a
-                    href={`tel:${siteConfig.phoneHref}`}
-                    className="font-medium text-slate-900 transition hover:text-slate-700"
-                  >
-                    {siteConfig.phone}
-                  </a>
+                <div className="flex items-start gap-4">
+                  <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-900">
+                    <PhoneCall className="h-4 w-4" strokeWidth={1.8} />
+                  </div>
+                  <div>
+                    <div className="text-sm text-slate-500">Phone</div>
+                    <a
+                      href={`tel:${siteConfig.phoneHref}`}
+                      className="font-medium text-slate-900 transition hover:text-slate-700"
+                    >
+                      {siteConfig.phone}
+                    </a>
+                  </div>
                 </div>
 
-                <div>
-                  <div className="text-sm text-slate-500">Email</div>
-                  <a
-                    href={`mailto:${siteConfig.email}`}
-                    className="font-medium text-slate-900 transition hover:text-slate-700"
-                  >
-                    {siteConfig.email}
-                  </a>
+                <div className="flex items-start gap-4">
+                  <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-slate-900">
+                    <Mail className="h-4 w-4" strokeWidth={1.8} />
+                  </div>
+                  <div>
+                    <div className="text-sm text-slate-500">Email</div>
+                    <a
+                      href={`mailto:${siteConfig.email}`}
+                      className="font-medium text-slate-900 transition hover:text-slate-700"
+                    >
+                      {siteConfig.email}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -153,48 +161,6 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
             </p>
 
             <ContactForm defaultValues={defaultValues} />
-
-            <div className="mt-8 grid gap-4 border-t border-slate-200 pt-6 sm:grid-cols-3">
-              <div className="rounded-2xl bg-slate-50 px-4 py-4">
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-white text-slate-900 shadow-sm">
-                  <PhoneCall className="h-4 w-4" strokeWidth={1.8} />
-                </div>
-                <div className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                  Call
-                </div>
-                <a
-                  href={`tel:${siteConfig.phoneHref}`}
-                  className="mt-2 block text-sm font-semibold text-slate-950"
-                >
-                  {siteConfig.phone}
-                </a>
-              </div>
-
-              <div className="rounded-2xl bg-slate-50 px-4 py-4">
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-white text-slate-900 shadow-sm">
-                  <Mail className="h-4 w-4" strokeWidth={1.8} />
-                </div>
-                <div className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                  Email
-                </div>
-                <a
-                  href={`mailto:${siteConfig.email}`}
-                  className="mt-2 block break-all text-sm font-semibold text-slate-950"
-                >
-                  {siteConfig.email}
-                </a>
-              </div>
-
-              <div className="rounded-2xl bg-slate-50 px-4 py-4">
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-2xl bg-white text-slate-900 shadow-sm">
-                  <MapPin className="h-4 w-4" strokeWidth={1.8} />
-                </div>
-                <div className="mt-3 text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                  Base
-                </div>
-                <div className="mt-2 text-sm font-semibold text-slate-950">Lucknow, India</div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

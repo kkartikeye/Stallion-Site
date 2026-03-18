@@ -27,16 +27,16 @@ export function Footer() {
     <footer className="border-t border-slate-200 bg-slate-50">
       <div className="container-site py-12">
         {!isHomePage && !isContactPage ? (
-          <div className="rounded-[2rem] bg-slate-950 px-8 py-8 text-white">
+          <div className="rounded-[1.6rem] bg-slate-950 px-5 py-6 text-white sm:rounded-[2rem] sm:px-8 sm:py-8">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-3xl">
-                <div className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
+                <div className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-sm sm:tracking-[0.2em]">
                   {footerCta.eyebrow}
                 </div>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+                <h2 className="mt-3 text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
                   {footerCta.title}
                 </h2>
-                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300">
+                <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-300 sm:gap-x-6">
                   {brandSignals.map((item) => (
                     <div key={item}>{item}</div>
                   ))}
@@ -54,7 +54,7 @@ export function Footer() {
           </div>
         ) : null}
 
-        <div className={`${isHomePage ? "mt-0" : "mt-10"} grid gap-10 md:grid-cols-[0.95fr_0.75fr_0.9fr_1.15fr]`}>
+        <div className={`${isHomePage ? "mt-0" : "mt-10"} grid gap-8 md:grid-cols-[0.95fr_0.75fr_0.9fr_1.15fr] md:gap-10`}>
           <div>
             <div className="text-lg font-semibold text-slate-950">{siteConfig.name}</div>
             <p className="mt-3 max-w-sm text-sm leading-7 text-slate-600">

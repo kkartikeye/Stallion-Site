@@ -18,17 +18,17 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="container-site py-4 md:py-6">
+      <div className="container-site py-3 md:py-6">
         <div className="flex items-center justify-between gap-4">
-          <Link href="/" className="flex min-w-0 items-center gap-3 shrink-0">
+          <Link href="/" className="flex min-w-0 items-center gap-2.5 shrink-0 sm:gap-3">
             <Image
               src="/images/logo.png"
               alt="Stallion Auto Parts Logo"
               width={288}
               height={96}
-              className="h-12 w-auto shrink-0 object-contain md:h-[72px]"
+              className="h-10 w-auto shrink-0 object-contain sm:h-12 md:h-[72px]"
             />
-            <span className="line-clamp-2 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl md:text-3xl">
+            <span className="line-clamp-2 text-lg font-semibold leading-tight tracking-tight text-slate-900 sm:text-xl md:text-3xl">
               {siteConfig.name}
             </span>
           </Link>
@@ -106,7 +106,7 @@ export function Navbar() {
             aria-expanded={isOpen}
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             onClick={() => setIsOpen((open) => !open)}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-900 transition duration-300 hover:bg-slate-50 md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-900 transition duration-300 hover:bg-slate-50 md:hidden"
           >
             {isOpen ? (
               <X className="h-5 w-5 transition-transform duration-300 ease-out" strokeWidth={2} />
@@ -139,7 +139,7 @@ export function Navbar() {
                       <Link
                         href={item.href}
                         onClick={() => setIsOpen(false)}
-                        className="block rounded-2xl px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-white"
+                        className="block rounded-2xl px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-white sm:text-base"
                       >
                         {item.label}
                       </Link>
@@ -150,7 +150,7 @@ export function Navbar() {
                             key={productLink.href}
                             href={productLink.href}
                             onClick={() => setIsOpen(false)}
-                            className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-white hover:text-slate-950"
+                            className="rounded-2xl px-4 py-3 text-xs font-medium text-slate-700 transition hover:bg-white hover:text-slate-950 sm:text-sm"
                           >
                             {productLink.label}
                           </Link>
@@ -162,7 +162,7 @@ export function Navbar() {
                       key={item.href}
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className="rounded-2xl px-4 py-3 text-base font-medium text-slate-800 transition hover:bg-slate-50"
+                      className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-800 transition hover:bg-slate-50 sm:text-base"
                     >
                       {item.label}
                     </Link>

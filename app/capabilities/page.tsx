@@ -316,15 +316,15 @@ export default function CapabilitiesPage() {
       </section>
 
       <section className="section-space">
-        <div className="container-site grid gap-5 xl:grid-cols-[0.78fr_1.22fr] xl:items-start">
-          <div className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-6 xl:sticky xl:top-28">
+        <div className="container-site grid gap-4 xl:grid-cols-[0.78fr_1.22fr] xl:items-start">
+          <div className="rounded-[1.6rem] border border-slate-200 bg-slate-50 p-5 sm:rounded-[1.8rem] sm:p-6 xl:sticky xl:top-28">
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
               Capability By Product Family
             </div>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950">
+            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
               Capability by product family
             </h2>
-            <p className="mt-4 text-base leading-7 text-slate-600">
+            <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
               Each route below connects actual product families to the processes most relevant to
               making them.
             </p>
@@ -372,7 +372,7 @@ export default function CapabilitiesPage() {
                   key={item.title}
                   className="overflow-hidden rounded-[1.6rem] border border-slate-200 bg-white shadow-sm"
                 >
-                  <div className="border-b border-slate-200 bg-slate-50 px-5 py-4">
+                  <div className="border-b border-slate-200 bg-slate-50 px-4 py-4 sm:px-5">
                     <div className="flex items-start gap-3">
                       <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-white">
                         <Icon className="h-4.5 w-4.5" strokeWidth={1.8} />
@@ -388,8 +388,8 @@ export default function CapabilitiesPage() {
                     </div>
                   </div>
 
-                  <div className="p-5">
-                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                  <div className="p-4 sm:p-5">
+                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-3.5 sm:p-4">
                       <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                         Core capabilities
                       </div>
@@ -405,7 +405,7 @@ export default function CapabilitiesPage() {
                       </div>
                     </div>
 
-                    <div className="mt-3 rounded-2xl border border-slate-200 bg-white p-4">
+                    <div className="mt-3 rounded-2xl border border-slate-200 bg-white p-3.5 sm:p-4">
                       <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                         Representative products
                       </div>
