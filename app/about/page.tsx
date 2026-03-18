@@ -41,8 +41,8 @@ const companyHighlights = [
     icon: Users,
   },
   {
-    value: "ISO 9001 & IATF 16949",
-    label: "Quality system",
+    value: "ISO 9001:2015 and IATF 16949-aligned",
+    label: "Quality discipline",
     icon: Cog,
   },
 ];
@@ -94,6 +94,7 @@ export default function AboutPage() {
         title="About Us"
         description="Precision manufacturing from Lucknow, India for OEM, industrial, and export customers."
         imageSrc="/images/workforce-thumbsup.png"
+        imageAlt="Stallion Auto Parts team members standing together at the facility"
         imageLegend="Stallion Team"
         tertiaryAction={{
           href: `tel:${siteConfig.phoneHref}`,
@@ -281,8 +282,8 @@ export default function AboutPage() {
 
           <div className="space-y-4">
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <div className="flex items-start gap-5">
-                <div className="relative h-28 w-24 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/10">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
+                <div className="relative h-52 w-full overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:h-28 sm:w-24 sm:shrink-0">
                   <Image
                     src="/images/bharat-khanna.jpeg"
                     alt="Bharat Khanna"
@@ -305,7 +306,7 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
                 <div className="text-sm font-medium uppercase tracking-[0.16em] text-slate-400">
                   Founder Legacy

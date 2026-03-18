@@ -13,6 +13,7 @@ type PageHeroProps = {
   title: string;
   description: string;
   imageSrc?: string;
+  imageAlt?: string;
   imageContainerClassName?: string;
   imageClassName?: string;
   imageQuality?: number;
@@ -67,6 +68,7 @@ export function PageHero({
   title,
   description,
   imageSrc,
+  imageAlt,
   imageContainerClassName,
   imageClassName,
   imageQuality,
@@ -103,16 +105,16 @@ export function PageHero({
           <div className="hero-fade-up hero-fade-up-delay-3 mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
             <HeroActionLink
               action={primaryAction}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 sm:justify-start"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5 sm:w-auto sm:justify-start"
             />
             <HeroActionLink
               action={secondaryAction}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10 sm:justify-start"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10 sm:w-auto sm:justify-start"
             />
             {tertiaryAction ? (
               <HeroActionLink
                 action={tertiaryAction}
-                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10 sm:justify-start"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10 sm:w-auto sm:justify-start"
               />
             ) : null}
           </div>
@@ -141,7 +143,7 @@ export function PageHero({
               {imageSrc ? (
                 <Image
                   src={imageSrc}
-                  alt={title}
+                  alt={imageAlt ?? title}
                   fill
                   quality={imageQuality}
                   className={`hero-image-pan ${imageClassName ?? "object-cover"}`}

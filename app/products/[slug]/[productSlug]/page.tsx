@@ -62,6 +62,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         title={product.name}
         description={product.description}
         imageSrc={product.imageSrc ?? family.heroImageSrc}
+        imageAlt={product.imageAlt ?? family.heroLegend}
         imageLegend={family.eyebrow}
       />
 
@@ -85,7 +86,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             />
           </div>
 
-          <div className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-6">
+          <div className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-5 sm:p-6">
             <div className="grid gap-5 sm:grid-cols-2">
               {product.specs.map((spec) => (
                 <div key={spec.label}>
@@ -104,7 +105,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         {product.imageSrc ? (
           <div className="container-site mt-10">
             <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-              <div className="relative aspect-[16/8] bg-slate-100">
+              <div className="relative aspect-[4/3] bg-slate-100 sm:aspect-[16/8]">
                 <Image
                   src={product.imageSrc}
                   alt={product.imageAlt ?? product.name}
@@ -118,7 +119,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </section>
 
       <section className="bg-slate-50 section-space">
-        <div className="container-site grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div className="container-site grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <SectionHeading
               eyebrow="Inquiry"
@@ -127,24 +128,30 @@ export default async function ProductPage({ params }: ProductPageProps) {
             />
           </div>
 
-          <div className="rounded-[1.8rem] border border-slate-200 bg-white p-7 shadow-sm">
-            <div className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
-              Selected Product
+          <div className="rounded-[1.8rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+            <div className="rounded-[1.35rem] border border-slate-200 bg-slate-50 p-4 sm:p-5">
+              <div className="text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+                Selected Product
+              </div>
+              <div className="mt-2 text-xl font-semibold tracking-tight text-slate-950 sm:text-2xl">
+                {product.name}
+              </div>
+              <div className="mt-3 text-sm leading-7 text-slate-600">
+                {family.eyebrow}
+              </div>
             </div>
-            <div className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
-              {product.name}
-            </div>
-            <div className="mt-5 flex flex-wrap gap-3">
+
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 href={`/contact?inquiryType=${encodeURIComponent("Request a Quote")}&productFamily=${encodeURIComponent(family.eyebrow)}&product=${encodeURIComponent(product.name)}&message=${encodeURIComponent(`I would like to discuss ${product.name}.`)}`}
-                className="inline-flex items-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 sm:w-auto sm:justify-start"
               >
                 Request a Product Quote
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href={`/contact?inquiryType=${encodeURIComponent("Product Discussion")}&productFamily=${encodeURIComponent(family.eyebrow)}&product=${encodeURIComponent(product.name)}&message=${encodeURIComponent(`I would like to discuss ${product.name} for our application.`)}`}
-                className="inline-flex items-center rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+                className="inline-flex w-full items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 sm:w-auto sm:justify-start"
               >
                 Start Product Inquiry
               </Link>

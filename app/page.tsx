@@ -41,9 +41,9 @@ function getCapabilityIcon(title: string) {
 
 const qualityHighlights = [
   {
-    title: "ISO 9001:2015 and IATF 16949 mindset",
+    title: "ISO 9001:2015 and IATF 16949-aligned practices",
     description:
-      "Quality practices aligned with recognized manufacturing standards and disciplined process expectations.",
+      "Quality practices aligned with ISO 9001:2015 and IATF 16949 expectations for disciplined manufacturing control.",
     icon: BadgeCheck,
   },
   {
@@ -53,7 +53,7 @@ const qualityHighlights = [
     icon: Ruler,
   },
   {
-    title: "3,200 sq. meter facility",
+    title: "3,200 m² facility",
     description:
       "An organized manufacturing footprint that supports process flow, output planning, and scalable execution.",
     icon: Building2,

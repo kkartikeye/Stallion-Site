@@ -30,8 +30,13 @@ export function KeyedImage({ alt, className, src }: KeyedImageProps) {
     const image = new Image();
     image.crossOrigin = "anonymous";
     image.src = src;
+    let isActive = true;
 
     image.onload = () => {
+      if (!isActive) {
+        return;
+      }
+
       const canvas = canvasRef.current;
       if (!canvas) {
         return;
@@ -90,14 +95,28 @@ export function KeyedImage({ alt, className, src }: KeyedImageProps) {
       croppedContext.putImageData(cropped, 0, 0);
       setReady(true);
     };
+
+    return () => {
+      isActive = false;
+    };
   }, [src]);
 
   return (
-    <canvas
-      ref={canvasRef}
-      aria-label={alt}
-      role="img"
-      className={`${className ?? ""} ${ready ? "opacity-100" : "opacity-0"}`}
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        aria-hidden={!ready}
+        aria-label={alt}
+        role="img"
+        className={`${className ?? ""} ${ready ? "block" : "hidden"}`}
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        aria-hidden={ready}
+        className={`${className ?? ""} ${ready ? "hidden" : "block"}`}
+      />
+    </>
   );
 }

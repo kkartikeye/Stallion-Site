@@ -25,7 +25,7 @@ export const brandSignals = [
 export const credibilityHighlights = [
   {
     label: "Quality mindset",
-    value: "ISO 9001 and IATF-aligned operating discipline",
+    value: "ISO 9001:2015 and IATF 16949-aligned operating discipline",
   },
   {
     label: "Manufacturing base",

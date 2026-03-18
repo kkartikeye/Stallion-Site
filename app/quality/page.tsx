@@ -8,6 +8,7 @@ import {
   Workflow,
   Wrench,
 } from "lucide-react";
+import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { createPageMetadata } from "@/lib/metadata";
@@ -51,7 +52,7 @@ const qualitySystems = [
   {
     title: "Quality System Alignment",
     description:
-      "Operating practices aligned with ISO 9001 and IATF-oriented automotive quality expectations.",
+      "Operating practices aligned with ISO 9001:2015 and IATF 16949 quality expectations for automotive manufacturing.",
     icon: BadgeCheck,
   },
   {
@@ -80,6 +81,12 @@ const executionPoints = [
   "Continuous-improvement habits help strengthen shop-floor consistency, responsiveness, and execution stability.",
 ];
 
+const qualityProcessImage = {
+  src: "https://images.pexels.com/photos/8956445/pexels-photo-8956445.jpeg?cs=srgb&dl=pexels-daniel-smyth-83914874-8956445.jpg&fm=jpg",
+  alt: "Close-up of CNC machining with coolant splashing during operation",
+  label: "Process Control In Action",
+};
+
 export default function QualityPage() {
   return (
     <>
@@ -87,6 +94,7 @@ export default function QualityPage() {
         title="Quality"
         description="Quality systems, inspection discipline, and process control designed to support consistent manufacturing and dependable supply."
         imageSrc="/images/shop-floor.jpg"
+        imageAlt="Shop floor inside the Stallion Auto Parts manufacturing facility"
         imageClassName="object-cover object-center"
         imageQuality={100}
         imageLegend="Shop Floor"
@@ -142,6 +150,24 @@ export default function QualityPage() {
               </div>
             );
           })}
+        </div>
+
+        <div className="container-site mt-12">
+          <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
+            <div className="relative aspect-[4/3] bg-slate-100 sm:aspect-[16/8]">
+              <Image
+                src={qualityProcessImage.src}
+                alt={qualityProcessImage.alt}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5 sm:p-6">
+                <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
+                  {qualityProcessImage.label}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

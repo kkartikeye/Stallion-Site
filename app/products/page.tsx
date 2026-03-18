@@ -63,6 +63,7 @@ export default function ProductsPage() {
         title="Products"
         description="Representative product families across steering systems, lever assemblies, crown wheels, clutch-side parts, support components, and CNC-machined items for OEM and engineering programs."
         imageSrc="/images/Steering-Column-Assemblies..jpg"
+        imageAlt="Representative steering column assemblies manufactured by Stallion Auto Parts"
         imageLegend="Representative Product Range"
       />
 
@@ -116,7 +117,7 @@ export default function ProductsPage() {
           })}
         </div>
 
-        <div className="container-site mt-10 grid gap-4 md:grid-cols-3">
+        <div className="container-site mt-10 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {pageSignals.map((item) => (
             <div
               key={item.label}
@@ -162,8 +163,8 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="p-6">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="min-w-0">
                       <p className="text-sm font-medium uppercase tracking-[0.18em] text-slate-500">
                         {family.eyebrow}
                       </p>
@@ -171,7 +172,7 @@ export default function ProductsPage() {
                         {family.overviewTitle}
                       </h2>
                     </div>
-                    <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-right">
+                    <div className="w-fit rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-left sm:text-right">
                       <div className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-500">
                         Detail Page
                       </div>
@@ -212,13 +213,13 @@ export default function ProductsPage() {
                     ))}
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between gap-4 border-t border-slate-200 pt-5">
+                  <div className="mt-6 flex flex-col gap-4 border-t border-slate-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
                     <div className="text-sm text-slate-500">
                       {family.details.length} representative products
                     </div>
                     <Link
                       href={`/products/${family.slug}`}
-                      className="inline-flex items-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition group-hover:-translate-y-0.5"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition group-hover:-translate-y-0.5 sm:w-auto"
                     >
                       View Product Family
                       <ArrowRight className="h-4 w-4" />

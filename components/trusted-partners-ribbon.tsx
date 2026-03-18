@@ -26,18 +26,50 @@ export function TrustedPartnersRibbon({
   const pauseUntilRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
   const lastFrameTimeRef = useRef<number | null>(null);
+  const prefersReducedMotionRef = useRef(false);
+  const isInViewRef = useRef(true);
 
   function pauseAutoScroll(durationMs: number) {
     pauseUntilRef.current = Date.now() + durationMs;
   }
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateReducedMotionPreference = () => {
+      prefersReducedMotionRef.current = mediaQuery.matches;
+    };
+
+    updateReducedMotionPreference();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", updateReducedMotionPreference);
+    } else {
+      mediaQuery.addListener(updateReducedMotionPreference);
+    }
+
+    const observer =
+      typeof IntersectionObserver === "undefined"
+        ? null
+        : new IntersectionObserver(
+            ([entry]) => {
+              isInViewRef.current = entry?.isIntersecting ?? true;
+            },
+            { threshold: 0.15 },
+          );
+
+    if (observer && trackRef.current) {
+      observer.observe(trackRef.current);
+    }
+
     function step(timestamp: number) {
       const track = trackRef.current;
 
       if (track) {
         const shouldPause =
-          dragState.current.isDragging || Date.now() < pauseUntilRef.current;
+          dragState.current.isDragging ||
+          Date.now() < pauseUntilRef.current ||
+          prefersReducedMotionRef.current ||
+          !isInViewRef.current;
 
         if (!shouldPause) {
           const lastFrameTime = lastFrameTimeRef.current ?? timestamp;
@@ -58,6 +90,16 @@ export function TrustedPartnersRibbon({
     animationFrameRef.current = window.requestAnimationFrame(step);
 
     return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+
+      if (typeof mediaQuery.removeEventListener === "function") {
+        mediaQuery.removeEventListener("change", updateReducedMotionPreference);
+      } else {
+        mediaQuery.removeListener(updateReducedMotionPreference);
+      }
+
       if (animationFrameRef.current !== null) {
         window.cancelAnimationFrame(animationFrameRef.current);
       }
@@ -132,9 +174,9 @@ export function TrustedPartnersRibbon({
           {duplicatedPartners.map((partner, index) => (
             <div
               key={`${partner.name}-${index}`}
-              className="flex w-[220px] shrink-0 items-center justify-center rounded-[1.75rem] border border-slate-200 bg-white px-6 py-6 shadow-sm"
+              className="flex w-[184px] shrink-0 items-center justify-center rounded-[1.5rem] border border-slate-200 bg-white px-4 py-5 shadow-sm sm:w-[220px] sm:rounded-[1.75rem] sm:px-6 sm:py-6"
             >
-              <div className="relative h-16 w-[150px] sm:w-[170px]">
+              <div className="relative h-14 w-[132px] sm:h-16 sm:w-[170px]">
                 <Image
                   src={partner.logoSrc}
                   alt={`${partner.name} logo`}

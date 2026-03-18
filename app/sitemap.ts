@@ -12,18 +12,14 @@ const staticRoutes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
   return [
     ...staticRoutes.map((path) => ({
       url: new URL(path || "/", siteConfig.url).toString(),
-      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: path === "" ? 1 : 0.8,
     })),
     ...productFamilies.map((family) => ({
       url: new URL(`/products/${family.slug}`, siteConfig.url).toString(),
-      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
@@ -33,7 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
           `/products/${family.slug}/${getProductSlug(product.name)}`,
           siteConfig.url,
         ).toString(),
-        lastModified: now,
         changeFrequency: "monthly" as const,
         priority: 0.6,
       })),

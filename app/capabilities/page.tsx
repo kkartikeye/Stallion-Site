@@ -185,6 +185,19 @@ const supportAreas = [
   },
 ];
 
+const processShowcaseImages = [
+  {
+    src: "https://images.unsplash.com/photo-1713371398484-cc4e4f6a262a?auto=format&fit=crop&fm=jpg&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&q=80&w=1800",
+    alt: "Close-up of CNC machining in process",
+    label: "CNC Machining",
+  },
+  {
+    src: "/images/finished crown wheel.png",
+    alt: "Finished crown wheel components",
+    label: "Finished Crown Wheels",
+  },
+];
+
 export default function CapabilitiesPage() {
   return (
     <>
@@ -192,6 +205,7 @@ export default function CapabilitiesPage() {
         title="Capabilities"
         description="CNC machining, grinding, induction hardening, fabrication, sub-assemblies, and drawing-led manufacturing support for buyer-specific production requirements."
         imageSrc="/images/machine-shop.png"
+        imageAlt="Machine shop floor with CNC and production equipment at Stallion Auto Parts"
         imageLegend="Manufacturing Capabilities"
       />
 
@@ -225,37 +239,21 @@ export default function CapabilitiesPage() {
         </div>
 
         <div className="container-site mt-12 grid items-start gap-5 md:grid-cols-2">
-          <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-            <div className="relative aspect-[16/10] bg-slate-100">
-              <Image
-                src="/images/quality-gate2.png"
-                alt="Quality gate process at Stallion Auto Parts"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5">
-                <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
-                  Quality Gate
+          {processShowcaseImages.map((image) => (
+            <div
+              key={image.label}
+              className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm"
+            >
+              <div className="relative aspect-[16/10] bg-slate-100">
+                <Image src={image.src} alt={image.alt} fill className="object-cover" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5">
+                  <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
+                    {image.label}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-            <div className="relative aspect-[16/10] bg-slate-100">
-              <Image
-                src="/images/finished crown wheel.png"
-                alt="Finished crown wheel components"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5">
-                <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
-                  Finished Crown Wheels
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="container-site mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { RouteScrollReset } from "@/components/route-scroll-reset";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -90,6 +91,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <RouteScrollReset />
         <Navbar />
         <main>{children}</main>
         <Footer />
