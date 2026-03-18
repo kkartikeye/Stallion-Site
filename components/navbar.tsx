@@ -1,38 +1,95 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { navLinks } from "@/lib/site";
+import { productFamilies } from "@/lib/product-families";
+import { navLinks, siteConfig } from "@/lib/site";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
+
+  const productNavLinks = productFamilies.map((family) => ({
+    href: `/products/${family.slug}`,
+    label: family.eyebrow,
+  }));
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
       <div className="container-site py-4 md:py-6">
         <div className="flex items-center justify-between gap-4">
           <Link href="/" className="flex min-w-0 items-center gap-3 shrink-0">
-            <img
+            <Image
               src="/images/logo.png"
               alt="Stallion Auto Parts Logo"
+              width={288}
+              height={96}
               className="h-12 w-auto shrink-0 object-contain md:h-[72px]"
             />
             <span className="line-clamp-2 text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl md:text-3xl">
-              Stallion Auto Parts
+              {siteConfig.name}
             </span>
           </Link>
 
           <nav className="hidden items-center gap-10 md:flex">
-            {navLinks.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-lg font-medium text-slate-700 transition hover:text-slate-950"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navLinks.map((item) =>
+              item.href === "/products" ? (
+                <div
+                  key={item.href}
+                  className="group relative"
+                  onMouseEnter={() => setIsProductsOpen(true)}
+                  onMouseLeave={() => setIsProductsOpen(false)}
+                >
+                  <button
+                    type="button"
+                    className="inline-flex items-center gap-2 text-lg font-medium text-slate-700 transition hover:text-slate-950"
+                    aria-expanded={isProductsOpen}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      className={`h-4 w-4 transition ${isProductsOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+
+                  <div
+                    className={`absolute left-1/2 top-full z-50 mt-4 w-[320px] -translate-x-1/2 rounded-[1.75rem] border border-slate-200 bg-white p-4 shadow-xl transition-all duration-200 ${
+                      isProductsOpen
+                        ? "visible translate-y-0 opacity-100"
+                        : "invisible -translate-y-2 opacity-0"
+                    }`}
+                  >
+                    <Link
+                      href="/products"
+                      className="block rounded-2xl px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-50"
+                    >
+                      All Product Families
+                    </Link>
+
+                    <div className="mt-2 grid gap-1 border-t border-slate-200 pt-3">
+                      {productNavLinks.map((productLink) => (
+                        <Link
+                          key={productLink.href}
+                          href={productLink.href}
+                          className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-50 hover:text-slate-950"
+                        >
+                          {productLink.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-lg font-medium text-slate-700 transition hover:text-slate-950"
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
           </nav>
 
           <div className="hidden md:block">
@@ -76,16 +133,41 @@ export function Navbar() {
               }`}
             >
               <nav className="grid gap-2">
-                {navLinks.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className="rounded-2xl px-4 py-3 text-base font-medium text-slate-800 transition hover:bg-slate-50"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navLinks.map((item) =>
+                  item.href === "/products" ? (
+                    <div key={item.href} className="rounded-2xl border border-slate-200 bg-slate-50 p-2">
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="block rounded-2xl px-4 py-3 text-base font-semibold text-slate-900 transition hover:bg-white"
+                      >
+                        {item.label}
+                      </Link>
+
+                      <div className="grid gap-1 pt-1">
+                        {productNavLinks.map((productLink) => (
+                          <Link
+                            key={productLink.href}
+                            href={productLink.href}
+                            onClick={() => setIsOpen(false)}
+                            className="rounded-2xl px-4 py-3 text-sm font-medium text-slate-700 transition hover:bg-white hover:text-slate-950"
+                          >
+                            {productLink.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="rounded-2xl px-4 py-3 text-base font-medium text-slate-800 transition hover:bg-slate-50"
+                    >
+                      {item.label}
+                    </Link>
+                  ),
+                )}
               </nav>
 
               <div className="mt-4 border-t border-slate-200 pt-4">

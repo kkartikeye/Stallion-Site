@@ -12,8 +12,17 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
-import { ContactCTA } from "@/components/contact-cta";
 import { KeyedImage } from "@/components/keyed-image";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
+
+export const metadata = createPageMetadata({
+  title: "About Stallion Auto Parts",
+  description:
+    "Learn about Stallion Auto Parts, its manufacturing base in Lucknow, quality-led operating approach, and long-term OEM supply focus.",
+  path: "/about",
+  image: "/images/workforce-thumbsup.png",
+});
 
 const companyHighlights = [
   {
@@ -86,6 +95,11 @@ export default function AboutPage() {
         description="Precision manufacturing from Lucknow, India for OEM, industrial, and export customers."
         imageSrc="/images/workforce-thumbsup.png"
         imageLegend="Stallion Team"
+        tertiaryAction={{
+          href: `tel:${siteConfig.phoneHref}`,
+          label: "Call Sales",
+          icon: "phone",
+        }}
       />
 
       <section className="section-space">
@@ -314,8 +328,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <ContactCTA />
     </>
   );
 }

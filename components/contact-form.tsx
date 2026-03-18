@@ -6,9 +6,30 @@ import {
   submitContactForm,
   type ContactFormState,
 } from "@/app/contact/actions";
+import { productFamilies } from "@/lib/product-families";
+
+const inquiryTypes = [
+  "Request a Quote",
+  "Pricing Inquiry",
+  "Product Discussion",
+  "Capability Discussion",
+  "Export Inquiry",
+  "General Inquiry",
+];
 
 const initialState: ContactFormState = {
   status: "idle",
+};
+
+type ContactFormProps = {
+  defaultValues?: {
+    inquiryType?: string;
+    message?: string;
+    phone?: string;
+    product?: string;
+    productFamily?: string;
+    quantity?: string;
+  };
 };
 
 function SubmitButton() {
@@ -25,7 +46,7 @@ function SubmitButton() {
   );
 }
 
-export function ContactForm() {
+export function ContactForm({ defaultValues }: ContactFormProps) {
   const [state, formAction] = useActionState(submitContactForm, initialState);
 
   return (
@@ -72,6 +93,83 @@ export function ContactForm() {
         />
       </label>
 
+      <label className="block">
+        <span className="mb-2 block text-sm font-medium text-slate-700">
+          Product / Part
+        </span>
+        <input
+          name="product"
+          className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+          placeholder="Optional"
+          defaultValue={defaultValues?.product}
+        />
+      </label>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="block">
+          <span className="mb-2 block text-sm font-medium text-slate-700">
+            Phone / WhatsApp
+          </span>
+          <input
+            name="phone"
+            className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+            placeholder="+91 ..."
+            autoComplete="tel"
+            defaultValue={defaultValues?.phone}
+          />
+        </label>
+
+        <label className="block">
+          <span className="mb-2 block text-sm font-medium text-slate-700">
+            Inquiry Type
+          </span>
+          <select
+            name="inquiryType"
+            defaultValue={defaultValues?.inquiryType ?? ""}
+            className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+          >
+            <option value="">Select inquiry type</option>
+            {inquiryTypes.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <label className="block">
+          <span className="mb-2 block text-sm font-medium text-slate-700">
+            Product Family
+          </span>
+          <select
+            name="productFamily"
+            defaultValue={defaultValues?.productFamily ?? ""}
+            className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+          >
+            <option value="">Select product family</option>
+            {productFamilies.map((family) => (
+              <option key={family.slug} value={family.eyebrow}>
+                {family.eyebrow}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <label className="block">
+          <span className="mb-2 block text-sm font-medium text-slate-700">
+            Estimated Quantity / Volume
+          </span>
+          <input
+            name="quantity"
+            className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+            placeholder="Optional"
+            defaultValue={defaultValues?.quantity}
+          />
+        </label>
+      </div>
+
       <label className="hidden" aria-hidden="true">
         <span>Website</span>
         <input
@@ -88,7 +186,8 @@ export function ContactForm() {
         <textarea
           name="message"
           className="min-h-[180px] w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
-          placeholder="Tell us about your requirement, expected volumes, or component type"
+          placeholder="Tell us about your requirement, expected volumes, component type, drawing reference, material, or delivery needs"
+          defaultValue={defaultValues?.message}
           required
         />
       </label>

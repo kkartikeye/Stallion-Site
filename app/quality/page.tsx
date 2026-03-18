@@ -8,9 +8,17 @@ import {
   Workflow,
   Wrench,
 } from "lucide-react";
-import { ContactCTA } from "@/components/contact-cta";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: "Quality Systems and Process Control",
+  description:
+    "See how Stallion Auto Parts approaches quality through process control, inspection discipline, continuous improvement, and OEM-ready manufacturing execution.",
+  path: "/quality",
+  image: "/images/shop-floor.jpg",
+});
 
 const qualityPrinciples = [
   {
@@ -182,8 +190,6 @@ export default function QualityPage() {
           </div>
         </div>
       </section>
-
-      <ContactCTA />
     </>
   );
 }

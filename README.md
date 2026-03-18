@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Stallion Auto Parts Site
 
-## Getting Started
+Marketing site for Stallion Auto Parts, built with Next.js App Router, React 19, and Tailwind CSS v4.
 
-First, run the development server:
+## Stack
+
+- Next.js 16
+- React 19
+- Tailwind CSS 4
+- TypeScript
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Contact Form
 
-To learn more about Next.js, take a look at the following resources:
+The contact form posts to `CONTACT_FORM_WEBHOOK_URL` when that environment variable is set.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- In development, submissions are captured locally at `/tmp/stallion-contact-submissions.jsonl` when no webhook is configured.
+- In production, the form will show a fallback contact message if the webhook is missing.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Example:
 
-## Deploy on Vercel
+```bash
+CONTACT_FORM_WEBHOOK_URL="https://example.com/webhook"
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The site includes:
+
+- page metadata for core routes
+- `robots.txt`
+- `sitemap.xml`
+- organization structured data

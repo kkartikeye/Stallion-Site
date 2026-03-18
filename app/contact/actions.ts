@@ -22,8 +22,13 @@ function getFieldValue(formData: FormData, key: string) {
 async function saveSubmissionForDevelopment(payload: {
   company: string;
   email: string;
+  inquiryType: string;
   message: string;
   name: string;
+  phone: string;
+  product: string;
+  productFamily: string;
+  quantity: string;
 }) {
   const outputPath = join("/tmp", "stallion-contact-submissions.jsonl");
 
@@ -45,6 +50,11 @@ export async function submitContactForm(
   const name = getFieldValue(formData, "name");
   const company = getFieldValue(formData, "company");
   const email = getFieldValue(formData, "email");
+  const phone = getFieldValue(formData, "phone");
+  const inquiryType = getFieldValue(formData, "inquiryType");
+  const product = getFieldValue(formData, "product");
+  const productFamily = getFieldValue(formData, "productFamily");
+  const quantity = getFieldValue(formData, "quantity");
   const message = getFieldValue(formData, "message");
   const website = getFieldValue(formData, "website");
 
@@ -70,8 +80,13 @@ export async function submitContactForm(
   const payload = {
     company,
     email,
+    inquiryType,
     message,
     name,
+    phone,
+    product,
+    productFamily,
+    quantity,
   };
 
   const webhookUrl = process.env.CONTACT_FORM_WEBHOOK_URL;

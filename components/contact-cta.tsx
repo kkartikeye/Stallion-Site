@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Mail, PhoneCall } from "lucide-react";
-import { siteConfig } from "@/lib/site";
+import { brandSignals, credibilityHighlights, siteConfig } from "@/lib/site";
 
 type ContactCTAVariant = "compact" | "featured";
 
@@ -28,6 +28,12 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                   Share your requirement and we will help move the conversation toward feasibility,
                   quoting, or production support.
                 </p>
+
+                <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300">
+                  {brandSignals.slice(0, 3).map((item) => (
+                    <div key={item}>{item}</div>
+                  ))}
+                </div>
               </div>
 
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
@@ -43,6 +49,13 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                   className="inline-flex items-center justify-center rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
                 >
                   Email Us Directly
+                </a>
+                <a
+                  href={`tel:${siteConfig.phoneHref}`}
+                  className="inline-flex items-center justify-center gap-2 text-sm text-slate-300"
+                >
+                  <PhoneCall className="h-4 w-4" />
+                  {siteConfig.phone}
                 </a>
               </div>
             </div>
@@ -88,24 +101,36 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                 </Link>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3 text-sm text-slate-300">
-                {[
-                  "OEM and export support",
-                  "Precision machining and fabrication",
-                  "Responsive RFQ discussions",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2"
-                  >
-                    {item}
-                  </div>
+              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300">
+                {brandSignals.map((item) => (
+                  <div key={item}>{item}</div>
                 ))}
               </div>
             </div>
 
             <div className="grid gap-4">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <div className="text-sm font-medium uppercase tracking-[0.16em] text-slate-400">
+                  Why buyers reach out
+                </div>
+                <div className="mt-4 grid gap-4">
+                  {credibilityHighlights.map((item) => (
+                    <div
+                      key={item.label}
+                      className="border-t border-white/8 pt-4 first:border-t-0 first:pt-0"
+                    >
+                      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                        {item.label}
+                      </div>
+                      <div className="mt-2 text-base leading-7 text-slate-200">
+                        {item.value}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
                 <div className="flex items-start gap-4">
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-white">
                     <PhoneCall className="h-5 w-5" />
@@ -115,7 +140,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                       Call
                     </div>
                     <a
-                      href={`tel:${siteConfig.phone}`}
+                      href={`tel:${siteConfig.phoneHref}`}
                       className="mt-2 block text-lg font-semibold text-white"
                     >
                       {siteConfig.phone}
@@ -124,7 +149,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
                 <div className="flex items-start gap-4">
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10 text-white">
                     <Mail className="h-5 w-5" />
@@ -143,7 +168,7 @@ export function ContactCTA({ variant = "compact" }: ContactCTAProps) {
                 </div>
               </div>
 
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm leading-7 text-slate-300 backdrop-blur-sm">
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm leading-7 text-slate-300">
                 Early conversations can start with a simple product photo, drawing, or volume
                 estimate. We can take it forward from there.
               </div>

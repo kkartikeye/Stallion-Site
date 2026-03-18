@@ -1,94 +1,186 @@
 import {
   Boxes,
+  BusFront,
+  CircleDot,
+  ArrowRight,
   Factory,
   Gauge,
-  Globe2,
   Layers3,
   PenTool,
   Settings,
   ShieldCheck,
+  TrainFront,
+  Truck,
   Wrench,
 } from "lucide-react";
 import Image from "next/image";
-import { ContactCTA } from "@/components/contact-cta";
+import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
+import { createPageMetadata } from "@/lib/metadata";
+
+export const metadata = createPageMetadata({
+  title: "Manufacturing Capabilities",
+  description:
+    "Explore Stallion Auto Parts capabilities across CNC machining, grinding, induction hardening, fabrication, drawing-led development, and coordinated supplier support.",
+  path: "/capabilities",
+  image: "/images/machine-shop.png",
+});
 
 const capabilityPillars = [
   {
-    title: "CNC Turning And Machining Centers",
+    title: "CNC turning and machining",
     description:
-      "In-house CNC turning and machining-center capability supports repeatable production of automotive and engineering components with close dimensional control.",
+      "Supports repeat production of steering, clutch-side, lever, and other engineering parts where dimensional control and process consistency matter.",
     icon: Settings,
   },
   {
-    title: "Grinding And Gauging Support",
+    title: "Grinding and gauging",
     description:
-      "Angular wheel head grinding backed by gauging discipline supports tighter finishing control where accuracy and consistency are critical.",
+      "Supports closer finishing control for shafts, crown-wheel-side parts, and other components where dimensional attention is more critical.",
     icon: Gauge,
   },
   {
-    title: "Induction Hardening",
+    title: "Induction hardening",
     description:
-      "Induction-hardening support strengthens the capability base for components that require surface-performance and durability improvements.",
+      "Extends the route for components that need improved surface performance, durability, and wear resistance in service.",
     icon: Layers3,
   },
   {
-    title: "Fabricated Parts And Sub-Assemblies",
+    title: "Fabricated parts and sub-assemblies",
     description:
-      "Capability extends beyond machined items into fabricated parts and coordinated sub-assemblies that call for broader production support.",
+      "Relevant for pedal-side, hinge, housing, and other programs that need more than a single machining operation.",
     icon: Wrench,
   },
   {
-    title: "Drawing-Led Development And Tooling",
+    title: "Surface finishing and coating support",
     description:
-      "Customer drawings, CAD-based development, and support for jigs and fixtures help adapt manufacturing around application-specific needs.",
-    icon: PenTool,
+      "Supports polished, coated, powder-coated, color-coated, and plated part requirements across multiple product families.",
+    icon: CircleDot,
   },
   {
-    title: "Prototype To Production Support",
+    title: "Drawing-led development, tooling, and prototype-to-production support",
     description:
-      "The setup is positioned to support early-stage prototype requirements as well as repeat production and bulk manufacturing programs.",
-    icon: Globe2,
+      "Customer drawings, CAD-led development, jigs, fixtures, and route planning help move parts from early-stage development into repeat production.",
+    icon: PenTool,
   },
 ];
 
-const capabilitySignals = [
+const industriesServed = [
   {
-    value: "Up to 400 mm",
-    label: "Machining Capacity",
+    title: "Truck programs",
+    description:
+      "Steering, clutch, lever, hub, brake-drum, and driveline-side components for heavy-duty vehicle applications.",
+    icon: Truck,
   },
   {
-    value: "3,200 m²",
-    label: "Manufacturing Footprint",
+    title: "Bus programs",
+    description:
+      "Column assemblies, pedal-side parts, hinges, housings, and other vehicle-side components suited to bus applications.",
+    icon: BusFront,
   },
   {
-    value: "CNC + Grinding",
-    label: "Core Process Base",
+    title: "Rail-linked engineering",
+    description:
+      "Drawing-led component manufacturing for broader transport and engineering programs where repeatability and supply discipline matter.",
+    icon: TrainFront,
   },
   {
-    value: "CAD + Fixtures",
-    label: "Development Support",
+    title: "OEM and industrial supply",
+    description:
+      "Repeat manufacturing support for OEM, industrial, and export customers that need continuity across parts, batches, and program cycles.",
+    icon: Factory,
+  },
+];
+
+const productCapabilityFit = [
+  {
+    eyebrow: "Machining Route",
+    title: "Steering systems and related machined parts",
+    icon: Settings,
+    href: "/products/steering-systems",
+    capabilities: [
+      "CNC turning and machining",
+      "Grinding and gauging",
+      "Drawing-led tooling",
+    ],
+    products: [
+      "Steering columns",
+      "Steering spindles",
+      "Steering arms",
+      "Turning tubes",
+    ],
+  },
+  {
+    eyebrow: "Assembly Route",
+    title: "Lever, pedal, and clutch-side systems",
+    icon: Wrench,
+    href: "/products/lever-and-pedal-systems",
+    capabilities: [
+      "Fabrication and sub-assemblies",
+      "Surface finishing and coating",
+      "Prototype to production support",
+    ],
+    products: [
+      "Gear shift levers",
+      "Clutch yokes",
+      "Pedal levers",
+      "Clutch housings",
+    ],
+  },
+  {
+    eyebrow: "Driveline Route",
+    title: "Driveline, crown-wheel, and turned components",
+    icon: Gauge,
+    href: "/products/crown-wheels-and-gears",
+    capabilities: [
+      "CNC turning and machining",
+      "Grinding and gauging",
+      "Induction hardening",
+    ],
+    products: [
+      "Crown wheels",
+      "Gear blanks",
+      "Pinion shafts",
+      "Precision turned parts",
+    ],
+  },
+  {
+    eyebrow: "Support Parts Route",
+    title: "Running and support components",
+    icon: Boxes,
+    href: "/products/hubs-pulleys-and-support-parts",
+    capabilities: [
+      "Machining of supplied inputs",
+      "Surface finishing and coating",
+      "Supplier coordination",
+    ],
+    products: [
+      "Wheel hubs",
+      "Brake drums",
+      "Pulleys",
+      "Hinges",
+    ],
   },
 ];
 
 const supportAreas = [
   {
-    title: "Tier-II And Supplier Coordination",
+    title: "Tier-II and supplier coordination",
     description:
-      "Programs can be supported through coordinated inputs from suppliers for castings, forgings, investment castings, and related component needs.",
+      "Programs can be supported through coordinated supplier inputs for castings, forgings, investment castings, and other upstream component requirements.",
     icon: Boxes,
   },
   {
-    title: "Production Planning And Flow",
+    title: "Production planning and shop-floor flow",
     description:
-      "Capability is reinforced by organized production setup, planning discipline, and shop-floor practices that support repeat execution.",
+      "Capability is reinforced by organized production planning, process flow, and shop-floor discipline aimed at repeatable execution over time.",
     icon: Factory,
   },
   {
-    title: "Customer-Specific Capability Response",
+    title: "Customer-specific manufacturing response",
     description:
-      "Manufacturing methods, tooling support, and execution approach can be adapted around customer drawings, requirements, and application needs.",
+      "Manufacturing methods, tooling support, and execution approach can be adapted around customer drawings, application requirements, and volume needs.",
     icon: ShieldCheck,
   },
 ];
@@ -98,7 +190,7 @@ export default function CapabilitiesPage() {
     <>
       <PageHero
         title="Capabilities"
-        description="Capabilities across CNC machining, grinding, induction hardening, fabrication, sub-assemblies, and drawing-led manufacturing support."
+        description="CNC machining, grinding, induction hardening, fabrication, sub-assemblies, and drawing-led manufacturing support for buyer-specific production requirements."
         imageSrc="/images/machine-shop.png"
         imageLegend="Manufacturing Capabilities"
       />
@@ -108,44 +200,28 @@ export default function CapabilitiesPage() {
           <div>
             <SectionHeading
               eyebrow="Capability Overview"
-              title="Manufacturing capability spanning machining, finishing, fabrication, and coordinated program support."
-              description="The capability base reflected in Stallion’s IndiaMART profile combines in-house machining strength with finishing processes, tooling support, fabrication, and linked supplier coordination."
+              title="Manufacturing capability built around real product families, not abstract process claims."
+              description="The strongest fit is for buyer-specific parts that need machining, fabrication, finishing, or coordinated program support tied back to actual vehicle-side and engineering components."
             />
           </div>
 
           <div className="space-y-5 text-lg leading-8 text-slate-600">
             <p>
-              The production setup is built to support customers who need machined and fabricated
-              components produced with process discipline, flexibility around drawings, and
-              readiness for repeat manufacturing over time.
+              Stallion&apos;s manufacturing base is suited to customers who need machined,
+              fabricated, or assembly-linked components produced against drawings with process
+              discipline and repeatability over time.
             </p>
             <p>
-              Core strengths include CNC turning and machining centers, angular grinding support,
-              induction hardening, fabricated parts, sub-assembly coordination, and drawing-led
-              adjustments through jigs, fixtures, and requirement-specific process development.
+              Core process capability includes CNC turning and machining centers, grinding and
+              gauging support, induction hardening, fabricated parts, sub-assembly work, and
+              drawing-led adaptation through CAD, jigs, and fixtures.
             </p>
             <p>
-              In practice, this allows Stallion to support prototype requirements, repeat
-              production, and broader customer programs that depend on both in-house capability
-              and coordinated upstream support.
+              The product range on this site, from steering systems and lever assemblies to crown
+              wheels, clutch parts, hubs, drums, and pulleys, reflects where those capabilities
+              are most relevant in practice.
             </p>
           </div>
-        </div>
-
-        <div className="container-site mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {capabilitySignals.map((item) => (
-            <div
-              key={item.label}
-              className="rounded-[1.4rem] border border-slate-200 bg-white p-5 shadow-sm"
-            >
-              <div className="text-2xl font-semibold tracking-tight text-slate-950">
-                {item.value}
-              </div>
-              <div className="mt-2 text-sm font-medium uppercase tracking-[0.16em] text-slate-500">
-                {item.label}
-              </div>
-            </div>
-          ))}
         </div>
 
         <div className="container-site mt-12 grid items-start gap-5 md:grid-cols-2">
@@ -207,12 +283,166 @@ export default function CapabilitiesPage() {
       </section>
 
       <section className="bg-slate-50 section-space">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="Industries Served"
+            title="Capability aligned with the industries reflected in Stallion&apos;s current product range."
+            description="Rather than listing unrelated sectors, this section stays tied to the applications already visible across the product families on the site."
+          />
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {industriesServed.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-3xl border border-slate-200 bg-white p-6"
+                >
+                  <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-950 text-white">
+                    <Icon className="h-5 w-5" strokeWidth={1.8} />
+                  </div>
+                  <div className="text-lg font-semibold tracking-tight text-slate-950">
+                    {item.title}
+                  </div>
+                  <p className="mt-3 text-base leading-7 text-slate-600">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-space">
+        <div className="container-site grid gap-5 xl:grid-cols-[0.78fr_1.22fr] xl:items-start">
+          <div className="rounded-[1.8rem] border border-slate-200 bg-slate-50 p-6 xl:sticky xl:top-28">
+            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+              Capability By Product Family
+            </div>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950">
+              Capability by product family
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              Each route below connects actual product families to the processes most relevant to
+              making them.
+            </p>
+
+            <div className="mt-6 grid gap-3">
+              {productCapabilityFit.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3"
+                  >
+                    <div className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-white">
+                      <Icon className="h-4 w-4" strokeWidth={1.8} />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                        {item.eyebrow}
+                      </div>
+                      <div className="mt-1 text-sm font-semibold leading-6 text-slate-900">
+                        {item.title}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <Link
+              href="/products"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-950 transition hover:text-slate-700"
+            >
+              View all product families
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {productCapabilityFit.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <div
+                  key={item.title}
+                  className="overflow-hidden rounded-[1.6rem] border border-slate-200 bg-white shadow-sm"
+                >
+                  <div className="border-b border-slate-200 bg-slate-50 px-5 py-4">
+                    <div className="flex items-start gap-3">
+                      <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-white">
+                        <Icon className="h-4.5 w-4.5" strokeWidth={1.8} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                          {item.eyebrow}
+                        </div>
+                        <h3 className="mt-1 text-[1.2rem] font-semibold leading-tight tracking-tight text-slate-950">
+                          {item.title}
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-5">
+                    <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                        Core capabilities
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {item.capabilities.map((capability) => (
+                          <div
+                            key={capability}
+                            className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-700"
+                          >
+                            {capability}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-3 rounded-2xl border border-slate-200 bg-white p-4">
+                      <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                        Representative products
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {item.products.map((product) => (
+                          <div
+                            key={product}
+                            className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700"
+                          >
+                            {product}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Link
+                      href={item.href}
+                      className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-slate-950 transition hover:text-slate-700"
+                    >
+                      Learn more
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 section-space">
         <div className="container-site grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <SectionHeading
-              eyebrow="How Capability Extends"
-              title="Capability at Stallion extends into production planning, supplier coordination, and customer-specific execution."
-              description="Manufacturing programs often depend on more than machine capacity alone. Stallion’s operating model supports broader execution needs through organized planning, linked inputs, and practical response to customer requirements."
+              eyebrow="Supporting Capabilities"
+              title="Capability at Stallion extends into planning, supplier coordination, and customer-specific execution."
+              description="This is where the operating model helps connect machine capability with broader program requirements."
             />
           </div>
 
@@ -244,8 +474,6 @@ export default function CapabilitiesPage() {
           </div>
         </div>
       </section>
-
-      <ContactCTA />
     </>
   );
 }

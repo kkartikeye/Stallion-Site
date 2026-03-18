@@ -1,4 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Mail, PhoneCall } from "lucide-react";
+import { brandSignals, siteConfig } from "@/lib/site";
+
+type HeroAction = {
+  href: string;
+  label: string;
+  icon?: "arrow" | "mail" | "phone";
+};
 
 type PageHeroProps = {
   title: string;
@@ -8,7 +17,51 @@ type PageHeroProps = {
   imageClassName?: string;
   imageQuality?: number;
   imageLegend?: string;
+  primaryAction?: HeroAction;
+  secondaryAction?: HeroAction;
+  tertiaryAction?: HeroAction;
 };
+
+function ActionIcon({ icon }: { icon?: HeroAction["icon"] }) {
+  if (icon === "mail") {
+    return <Mail className="h-4 w-4" />;
+  }
+
+  if (icon === "phone") {
+    return <PhoneCall className="h-4 w-4" />;
+  }
+
+  return <ArrowRight className="h-4 w-4" />;
+}
+
+function HeroActionLink({
+  action,
+  className,
+}: {
+  action: HeroAction;
+  className: string;
+}) {
+  const content = (
+    <>
+      <span>{action.label}</span>
+      <ActionIcon icon={action.icon} />
+    </>
+  );
+
+  if (action.href.startsWith("/")) {
+    return (
+      <Link href={action.href} className={className}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={action.href} className={className}>
+      {content}
+    </a>
+  );
+}
 
 export function PageHero({
   title,
@@ -18,6 +71,17 @@ export function PageHero({
   imageClassName,
   imageQuality,
   imageLegend,
+  primaryAction = {
+    href: "/contact",
+    label: "Request a Quote",
+    icon: "arrow",
+  },
+  secondaryAction = {
+    href: `mailto:${siteConfig.email}`,
+    label: "Email Sales",
+    icon: "mail",
+  },
+  tertiaryAction,
 }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden border-b border-slate-200 bg-slate-950 text-white">
@@ -36,7 +100,31 @@ export function PageHero({
             {description}
           </p>
 
-          <div className="hero-fade-up hero-fade-up-delay-3 mt-8 h-px w-24 bg-gradient-to-r from-sky-300/70 to-transparent" />
+          <div className="hero-fade-up hero-fade-up-delay-3 mt-8 flex flex-wrap gap-4">
+            <HeroActionLink
+              action={primaryAction}
+              className="inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:-translate-y-0.5"
+            />
+            <HeroActionLink
+              action={secondaryAction}
+              className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+            />
+            {tertiaryAction ? (
+              <HeroActionLink
+                action={tertiaryAction}
+                className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+              />
+            ) : null}
+          </div>
+
+          <div className="hero-fade-up hero-fade-up-delay-4 mt-8 space-y-4">
+            <div className="h-px w-24 bg-gradient-to-r from-sky-300/70 to-transparent" />
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-300">
+              {brandSignals.slice(0, 3).map((item) => (
+                <div key={item}>{item}</div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="relative mx-auto w-full max-w-[680px]">
@@ -68,6 +156,7 @@ export function PageHero({
                 </div>
               ) : null}
             </div>
+
           </div>
         </div>
       </div>

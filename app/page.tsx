@@ -13,9 +13,18 @@ import {
   Wrench,
 } from "lucide-react";
 import { capabilities, products, trustedPartners } from "@/lib/site";
+import { createPageMetadata } from "@/lib/metadata";
 import { SectionHeading } from "@/components/section-heading";
 import { ContactCTA } from "@/components/contact-cta";
 import { TrustedPartnersRibbon } from "@/components/trusted-partners-ribbon";
+
+export const metadata = createPageMetadata({
+  title: "Precision Automotive Components for OEM and Export Supply",
+  description:
+    "Stallion Auto Parts manufactures precision-machined and fabricated automotive components for OEM, industrial, and export customers from Lucknow, India.",
+  path: "/",
+  image: "/images/stallion-mainImage.png",
+});
 
 const capabilityIcons = {
   "Precision CNC Machining": Settings,
@@ -184,10 +193,6 @@ export default function HomePage() {
                     </div>
                     <div className="mt-1 text-base font-medium text-slate-100">
                       Lucknow, India
-                    </div>
-                    <div className="mt-2 text-sm leading-6 text-slate-300">
-                      From Uttar Pradesh&apos;s capital, Stallion supports truck, bus, and railway
-                      component programs across India and overseas.
                     </div>
                   </div>
                 </div>
