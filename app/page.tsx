@@ -43,7 +43,7 @@ const qualityHighlights = [
   {
     title: "ISO 9001:2015 and IATF 16949-aligned practices",
     description:
-      "Quality practices aligned with ISO 9001:2015 and IATF 16949 expectations for disciplined manufacturing control.",
+      "Quality practices aligned with ISO 9001:2015 and IATF 16949 expectations, supported by drawing-linked checks and detailed test procedures.",
     icon: BadgeCheck,
   },
   {
@@ -222,7 +222,8 @@ export default function HomePage() {
               <p>
                 The company combines precision machining, fabrication, and organized production
                 practices to deliver automotive components that meet demanding quality and delivery
-                expectations.
+                expectations, including coordinated support for bought-out and supplier-linked
+                items where broader assemblies require them.
               </p>
               <p>
                 Whether the requirement is for OEM programs, industrial buyers, or export supply,

@@ -4,7 +4,6 @@ import {
   Gauge,
   SearchCheck,
   Settings,
-  ShieldCheck,
   Workflow,
   Wrench,
 } from "lucide-react";
@@ -16,7 +15,7 @@ import { createPageMetadata } from "@/lib/metadata";
 export const metadata = createPageMetadata({
   title: "Quality Systems and Process Control",
   description:
-    "See how Stallion Auto Parts approaches quality through process control, inspection discipline, continuous improvement, and OEM-ready manufacturing execution.",
+    "See how Stallion Auto Parts approaches quality through process control, detailed test procedures, inspection discipline, and OEM-ready manufacturing execution.",
   path: "/quality",
   image: "/images/shop-floor.jpg",
 });
@@ -25,26 +24,26 @@ const qualityPrinciples = [
   {
     title: "Built Into The Process",
     description:
-      "Quality is reinforced through process planning, machining discipline, tooling attention, and production control rather than being treated only as a final-stage activity.",
+      "Quality is reinforced through process planning, machining discipline, tooling attention, and production control rather than being treated only as a final-stage sorting activity.",
     icon: Settings,
   },
   {
-    title: "Drawing-Led Verification",
+    title: "Detailed Test Procedures",
     description:
-      "Inspection practices are tied to customer drawings, defined checkpoints, and documented procedures to support dimensional conformity and repeatability.",
+      "Inspection practices are tied to customer drawings, defined checkpoints, and detailed test procedures to support conformity and repeatability.",
     icon: ClipboardCheck,
+  },
+  {
+    title: "Gauge-Backed Finishing Control",
+    description:
+      "Grinding, gauging, and closer-tolerance operations support parts where dimensional accuracy and finishing control matter more critically.",
+    icon: Gauge,
   },
   {
     title: "Continuous Improvement Habits",
     description:
       "Shop-floor routines are supported by Kanban thinking, Kaizen habits, and an operating mindset that looks for practical improvements over time.",
     icon: Workflow,
-  },
-  {
-    title: "OEM And Export Readiness",
-    description:
-      "The quality approach is shaped to support customers who expect steady execution, specification control, and dependable long-term manufacturing support.",
-    icon: ShieldCheck,
   },
 ];
 
@@ -56,15 +55,15 @@ const qualitySystems = [
     icon: BadgeCheck,
   },
   {
-    title: "Inspection Discipline",
+    title: "Accuracy To Customer Specifications",
     description:
-      "Checks performed against product requirements, inspection points, and customer-specific expectations.",
+      "Each job is handled with the intent to support accuracy and precision against the customer’s stated drawings and product requirements.",
     icon: SearchCheck,
   },
   {
-    title: "Close-Tolerance Attention",
+    title: "Inspection Discipline",
     description:
-      "Precision machining and grinding processes supported by fixture care and dimensional control.",
+      "Checks are performed against product requirements, inspection points, and customer-specific expectations throughout manufacturing.",
     icon: Gauge,
   },
   {
@@ -77,7 +76,8 @@ const qualitySystems = [
 
 const executionPoints = [
   "Process planning and production discipline support repeatability across machined, fabricated, and assembled parts.",
-  "Inspection practices are tied to drawings and test procedures to establish conformity against customer requirements.",
+  "Each job is checked against drawings and detailed test procedures to establish conformity against customer requirements.",
+  "Quality control is aimed at supporting accuracy and precision to client specifications, not just end-of-line acceptance.",
   "Continuous-improvement habits help strengthen shop-floor consistency, responsiveness, and execution stability.",
 ];
 
@@ -92,7 +92,7 @@ export default function QualityPage() {
     <>
       <PageHero
         title="Quality"
-        description="Quality systems, inspection discipline, and process control designed to support consistent manufacturing and dependable supply."
+        description="Quality systems, detailed test procedures, inspection discipline, and process control designed to support consistent manufacturing and dependable supply."
         imageSrc="/images/shop-floor.jpg"
         imageAlt="Shop floor inside the Stallion Auto Parts manufacturing facility"
         imageClassName="object-cover object-center"
@@ -106,7 +106,7 @@ export default function QualityPage() {
             <SectionHeading
               eyebrow="Quality Approach"
               title="A quality system built around process control, inspection discipline, and repeatable execution."
-              description="Stallion’s quality approach is shaped to support consistent manufacturing output through controlled methods, drawing-led verification, and steady shop-floor discipline."
+              description="Stallion’s quality approach is shaped to support consistent manufacturing output through controlled methods, detailed test procedures, drawing-led verification, and steady shop-floor discipline."
             />
           </div>
 
@@ -118,13 +118,14 @@ export default function QualityPage() {
             </p>
             <p>
               The emphasis is on reducing variability, supporting dimensional accuracy, and
-              maintaining dependable execution through machining discipline, inspection habits, and
-              practical process follow-through on the shop floor.
+              maintaining dependable execution through machining discipline, inspection habits,
+              gauge-backed checks, and practical process follow-through on the shop floor.
             </p>
             <p>
               For OEM, industrial, and export customers, that means a manufacturing partner that
               treats quality as part of everyday operating discipline rather than a separate
-              checkbox at the end of the line.
+              checkbox at the end of the line, with each job handled against defined procedures
+              and customer specifications.
             </p>
           </div>
         </div>
@@ -177,7 +178,7 @@ export default function QualityPage() {
             <SectionHeading
               eyebrow="What Supports It"
               title="The quality system is reinforced through inspection discipline, manufacturing control, and continuous improvement."
-              description="A concise view of the working elements that help support repeatable output and long-term supply confidence."
+              description="A concise view of the working elements that help support repeatable output, drawing conformity, and long-term supply confidence."
             />
 
             <div className="mt-8 space-y-4">

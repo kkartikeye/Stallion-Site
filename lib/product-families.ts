@@ -253,9 +253,9 @@ export const productFamilies: ProductFamily[] = [
     title: "Machined crown wheels, gear blanks, and related drivetrain-side parts",
     overviewTitle: "Driveline-side components for blanks, shafts, and finished gear-related parts.",
     heroDescription:
-      "Representative drivetrain-side parts including machined crown wheels, round gear blanks, shafts, and rolled components.",
+      "Representative drivetrain-side parts including machined crown wheels, gear blanks, shafts, spline-rolled parts, and precision turned components.",
     overviewDescription:
-      "This family groups together crown-wheel and gear-side parts that call for controlled machining, finishing attention, and repeat manufacturing support.",
+      "This family groups together crown-wheel and gear-side parts that call for controlled machining, grinding, hardening, finishing attention, and repeat manufacturing support.",
     body: [
       "The crown-wheel and gear-side range is naturally more technical than some of the assembly-led product families, so the emphasis here is on material, finish, and machining fit.",
       "For sourcing teams, it is often more useful to view this as a driveline-family capability rather than a set of isolated items, especially when requirements evolve from blanks to machined or finished parts.",
@@ -276,13 +276,14 @@ export const productFamilies: ProductFamily[] = [
     ],
     highlights: [
       { label: "Applications", value: "Driveline and transmission-side programs" },
-      { label: "Representative parts", value: "Crown wheels, gear blanks, shafts, rolled parts" },
-      { label: "Typical materials", value: "Steel, alloy, and turned blank stock" },
-      { label: "Capability fit", value: "Machining, finishing, and repeat supply" },
+      { label: "Representative parts", value: "Crown wheels, gear blanks, gear shafts, rolled parts" },
+      { label: "Typical materials", value: "Steel, alloy steel, and turned blank stock" },
+      { label: "Capability fit", value: "Machining, grinding, hardening, and repeat supply" },
     ],
     representativeParts: [
       "Machined Crown Wheel",
       "Round Gear Blanks",
+      "Gear Shafts",
       "Pinion Ground Shaft",
       "Spline Rolled Components",
       "Precision Turned Components",
@@ -338,6 +339,17 @@ export const productFamilies: ProductFamily[] = [
           { label: "Material", value: "Steel" },
           { label: "Surface", value: "Polished" },
           { label: "Application", value: "Automotive industry" },
+        ],
+      },
+      {
+        name: "Gear Shafts",
+        description:
+          "Gear shafts and related driveline shafts produced for transmission-side and mechanical programs where machining control, finishing discipline, and repeatability matter.",
+        specs: [
+          { label: "Part type", value: "Gear shaft" },
+          { label: "Application", value: "Driveline and transmission-side parts" },
+          { label: "Material", value: "Alloy steel" },
+          { label: "Production fit", value: "Drawing-led repeat supply" },
         ],
       },
     ],
@@ -434,9 +446,9 @@ export const productFamilies: ProductFamily[] = [
     title: "Wheel hubs, brake drums, pulleys, hinges, and related support components",
     overviewTitle: "Support components for running systems, engines, and vehicle-side hardware.",
     heroDescription:
-      "Representative support components including wheel hubs, brake drums, pulleys, hinges, and related heavy-duty vehicle parts.",
+      "Representative support components including wheel hubs, brake drums, pulleys, hinges, track rollers, and bracket-type heavy-duty vehicle parts.",
     overviewDescription:
-      "Beyond assemblies and lever systems, the product range also includes a wider set of support components used across heavy-duty vehicle and engineering applications.",
+      "Beyond assemblies and lever systems, the product range also includes a wider set of support components used across heavy-duty vehicle, suspension-side, and engineering applications.",
     body: [
       "This family works best as a grouped support-components page because the parts are functionally different but still sit within the same broader sourcing context for commercial vehicle programs.",
       "It is also a better place to show image-led variety, since these parts often tell their story visually through form, scale, and end use.",
@@ -462,14 +474,16 @@ export const productFamilies: ProductFamily[] = [
     ],
     highlights: [
       { label: "Applications", value: "Heavy-duty vehicle running systems" },
-      { label: "Representative parts", value: "Hubs, drums, pulleys, hinges" },
-      { label: "Typical materials", value: "Cast iron, ductile iron, and formed parts" },
+      { label: "Representative parts", value: "Hubs, drums, pulleys, rollers, and brackets" },
+      { label: "Typical materials", value: "Cast iron, ductile iron, steel, and formed parts" },
       { label: "Vehicle fit", value: "Truck, bus, and engineering applications" },
     ],
     representativeParts: [
       "Truck Wheel Hubs",
       "Truck Brake Drum",
       "Cast Iron Diesel Engine Pulley",
+      "Track Rollers",
+      "Spring Hanger Brackets",
       "Automobile Door Hinge",
       "Engine Mounting Arms Steering Arms",
     ],
@@ -526,6 +540,28 @@ export const productFamilies: ProductFamily[] = [
           { label: "Size", value: "4 x 5 inch" },
         ],
       },
+      {
+        name: "Track Rollers",
+        description:
+          "Track rollers for automotive and engineering use where controlled machining, wear resistance, and dependable repeat production are important.",
+        specs: [
+          { label: "Part type", value: "Track roller" },
+          { label: "Application", value: "Automotive and engineering programs" },
+          { label: "Material", value: "Steel" },
+          { label: "Production fit", value: "Machined repeat supply" },
+        ],
+      },
+      {
+        name: "Spring Hanger Brackets",
+        description:
+          "Machined and fabricated spring hanger brackets for suspension-side and support-component programs that call for dimensional consistency and batch production support.",
+        specs: [
+          { label: "Part type", value: "Spring hanger bracket" },
+          { label: "Application", value: "Heavy-duty vehicle suspension-side parts" },
+          { label: "Material", value: "Steel" },
+          { label: "Production fit", value: "Fabricated and machined supply" },
+        ],
+      },
     ],
   },
   {
@@ -534,9 +570,9 @@ export const productFamilies: ProductFamily[] = [
     title: "Precision machined and turned parts for customer-specific production programs",
     overviewTitle: "CNC and turned components for drawing-led production requirements.",
     heroDescription:
-      "Representative CNC-machined and turned components for automotive, engineering, and customer-specific production programs.",
+      "Representative CNC-machined and turned components for automotive, engineering, and customer-specific production programs, including flanges, valve bodies, shafts, and precision turned parts.",
     overviewDescription:
-      "This family focuses on CNC-machined and turned parts where material, finish, size range, and customer-specific machining requirements drive the manufacturing conversation.",
+      "This family focuses on CNC-machined and turned parts where material, finish, size range, tolerance expectations, and customer-specific machining requirements drive the manufacturing conversation.",
     body: [
       "The CNC page works best as its own family because the products are less about one common vehicle-side function and more about a manufacturing route: machining, turning, and customer-driven specification control.",
       "That makes it a good place to show both representative machined parts and the broader production model behind them.",
@@ -562,13 +598,16 @@ export const productFamilies: ProductFamily[] = [
     ],
     highlights: [
       { label: "Applications", value: "Automotive, engineering, and OEM components" },
-      { label: "Representative parts", value: "Machined parts, turned parts, housings" },
+      { label: "Representative parts", value: "Machined parts, turned parts, flanges, valve bodies, shafts" },
       { label: "Size coverage", value: "Small parts through larger turned components" },
       { label: "Production fit", value: "Drawing-led machining and repeat supply" },
     ],
     representativeParts: [
       "CNC Machined Parts",
       "Precision Turned Components",
+      "Machined Flanges",
+      "Valve Bodies",
+      "Stainless Steel Shafts",
       "CNC Machine Parts",
       "Cross Shaft Clutch Housing",
       "Spring Pins Lever Pins",
@@ -624,6 +663,39 @@ export const productFamilies: ProductFamily[] = [
           { label: "Surface", value: "Polished" },
           { label: "Application", value: "Automotive industry" },
           { label: "Vehicle type", value: "Heavy-duty vehicle" },
+        ],
+      },
+      {
+        name: "Machined Flanges",
+        description:
+          "Machined flanges for automotive and engineering assemblies where turning, facing, drilling, and dimensional consistency matter across repeat batches.",
+        specs: [
+          { label: "Part type", value: "Machined flange" },
+          { label: "Application", value: "Automotive and engineering assemblies" },
+          { label: "Support model", value: "Drawing-led machining" },
+          { label: "Production fit", value: "Repeat supply" },
+        ],
+      },
+      {
+        name: "Valve Bodies",
+        description:
+          "Customer-specific valve bodies produced through high-tolerance machining for programs that depend on controlled geometry, machining accuracy, and specification conformity.",
+        specs: [
+          { label: "Part type", value: "Valve body" },
+          { label: "Application", value: "Customer-specific machining programs" },
+          { label: "Support model", value: "Drawing-led manufacturing" },
+          { label: "CNC", value: "Yes" },
+        ],
+      },
+      {
+        name: "Stainless Steel Shafts",
+        description:
+          "Machined stainless-steel shafts for automotive and engineering use where finish quality, shaft geometry, and repeat dimensional control are important.",
+        specs: [
+          { label: "Part type", value: "Shaft" },
+          { label: "Material", value: "Stainless steel" },
+          { label: "Application", value: "Automotive and engineering programs" },
+          { label: "Production fit", value: "Repeat machining" },
         ],
       },
     ],

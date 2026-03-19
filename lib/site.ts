@@ -57,32 +57,32 @@ export const capabilities = [
   {
     title: "Precision CNC Machining",
     description:
-      "Machining support for repeatable component production with close attention to dimensional consistency and finish quality.",
+      "Machining support for repeatable production across shafts, flanges, valve bodies, gear blanks, and other customer-specific components.",
   },
   {
     title: "Fabricated Components",
     description:
-      "Fabrication capability for automotive parts and engineered assemblies that require dependable process control.",
+      "Fabrication capability for brackets, support parts, pedal-side hardware, and engineered assemblies that require dependable process control.",
   },
   {
     title: "Sub-Assembly Manufacturing",
     description:
-      "Structured assembly support for programs that need coordinated manufacturing across multiple operations.",
+      "Structured assembly support for programs that need coordinated manufacturing across machined parts, fabricated items, and linked bought-out inputs.",
   },
   {
     title: "OEM Supply Support",
     description:
-      "Production planning and execution aligned with OEM expectations around reliability, responsiveness, and continuity of supply.",
+      "Production planning and execution aligned with OEM expectations around reliability, responsiveness, continuity of supply, and batch discipline.",
   },
   {
     title: "Export-Oriented Manufacturing",
     description:
-      "A manufacturing approach designed to support international customers with consistent output and commercial readiness.",
+      "A manufacturing approach designed to support international customers with consistent output, drawing-led execution, and commercial readiness.",
   },
   {
     title: "Quality System Discipline",
     description:
-      "Operating practices shaped around ISO 9001:2015 and IATF 16949-aligned quality expectations and process rigor.",
+      "Operating practices shaped around ISO 9001:2015 and IATF 16949-aligned quality expectations, detailed test procedures, and process rigor.",
   },
 ];
 

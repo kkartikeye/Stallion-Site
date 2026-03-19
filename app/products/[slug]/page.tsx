@@ -316,16 +316,14 @@ export default async function ProductFamilyPage({ params }: ProductFamilyPagePro
                   key={item.name}
                   className="flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-slate-200 bg-white shadow-sm"
                 >
-                  {item.imageSrc ? (
-                    <div className="relative aspect-[4/3] bg-slate-100">
-                      <Image
-                        src={item.imageSrc}
-                        alt={item.imageAlt ?? item.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  ) : null}
+                  <div className="relative aspect-[4/3] bg-slate-100">
+                    <Image
+                      src={item.imageSrc ?? family.heroImageSrc}
+                      alt={item.imageAlt ?? item.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
 
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
                     <div className="min-w-0">

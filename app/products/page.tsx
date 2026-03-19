@@ -9,7 +9,7 @@ import { productFamilies } from "@/lib/product-families";
 export const metadata = createPageMetadata({
   title: "Product Families",
   description:
-    "Browse Stallion Auto Parts product families across steering systems, lever assemblies, crown wheels, clutch parts, and CNC-machined components.",
+    "Browse Stallion Auto Parts product families across steering systems, lever assemblies, driveline parts, clutch-side components, support hardware, and CNC-machined products.",
   path: "/products",
   image: "/images/Steering-Column-Assemblies..jpg",
 });
@@ -47,11 +47,11 @@ const pageSignals = [
     label: "Product families",
   },
   {
-    value: "Truck, Bus, Rail",
-    label: "Program orientation",
+    value: "Shafts, Flanges, Rollers",
+    label: "Added product breadth",
   },
   {
-    value: "Machined + Fabricated",
+    value: "Machining + Fabrication + Finishing",
     label: "Production model",
   },
 ];
@@ -61,7 +61,7 @@ export default function ProductsPage() {
     <>
       <PageHero
         title="Products"
-        description="Representative product families across steering systems, lever assemblies, crown wheels, clutch-side parts, support components, and CNC-machined items for OEM and engineering programs."
+        description="Representative product families across steering systems, lever assemblies, crown wheels, clutch-side parts, support hardware, and CNC-machined components for OEM and engineering programs."
         imageSrc="/images/Steering-Column-Assemblies..jpg"
         imageAlt="Representative steering column assemblies manufactured by Stallion Auto Parts"
         imageLegend="Representative Product Range"
@@ -72,24 +72,26 @@ export default function ProductsPage() {
           <div>
             <SectionHeading
               eyebrow="Product Overview"
-              title="A clearer product structure built around component families rather than one long catalog list."
-              description="The main products page is now designed for scanning. Each family has its own detail page, where the product-level information can go deeper without creating one long confusing layout."
+              title="A product structure built around real manufacturing families rather than one long catalog list."
+              description="Each family groups related parts and manufacturing routes together, so buyers can understand the product breadth without having to scan one long undifferentiated page."
             />
           </div>
 
           <div className="space-y-5 text-lg leading-8 text-slate-600">
             <p>
               Stallion’s representative range spans steering-side assemblies, lever systems,
-              drivetrain components, clutch-side parts, support components, and broader CNC
+              drivetrain components, clutch-side parts, support hardware, and broader CNC
               machined items produced for automotive and engineering use.
             </p>
             <p>
-              Structuring the range into families makes the page easier to understand, while also
-              creating space for better imagery, product-level detail, and cleaner navigation.
+              The range now reflects a wider part mix that includes valve bodies, machined
+              flanges, shafts, precision turned parts, track rollers, spring hanger brackets, and
+              other component types already present in Stallion’s manufacturing profile.
             </p>
             <p>
-              Each family page now groups representative products, application context, and useful
-              technical details in a more readable format.
+              Each family page groups representative products, application context, and useful
+              technical details in a more readable format, while keeping the overview page clean
+              and easier to scan.
             </p>
           </div>
         </div>
