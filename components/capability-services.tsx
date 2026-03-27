@@ -113,7 +113,7 @@ const services: CapabilityService[] = [
       "Fits programs that need more than a single machining operation",
       "Can be combined with supplied inputs such as castings, forgings, and sheet metal parts",
     ],
-    imageSrc: "/images/Clutch-Break-Pedal-Assembly..jpg",
+    imageSrc: "/images/clutch-brake-pedal.png",
     imageAlt: "Clutch and brake pedal assembly",
     imageFit: "contain",
     imageAnchor: "object-center",

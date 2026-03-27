@@ -31,7 +31,7 @@ const companyHighlights = [
     icon: Building2,
   },
   {
-    value: "3,200 m²",
+    value: "5,200 m²",
     label: "Facility size",
     icon: Boxes,
   },

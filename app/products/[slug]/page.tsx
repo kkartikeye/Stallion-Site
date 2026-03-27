@@ -218,6 +218,8 @@ export default async function ProductFamilyPage({ params }: ProductFamilyPagePro
   const summaryHighlights = family.highlights.filter(
     (item) => item.label !== "Representative parts",
   );
+  const productsWithImages = family.details.filter((item) => Boolean(item.imageSrc));
+  const productsWithoutImages = family.details.filter((item) => !item.imageSrc);
 
   return (
     <>
@@ -301,13 +303,11 @@ export default async function ProductFamilyPage({ params }: ProductFamilyPagePro
                 Products within {family.eyebrow}
               </h2>
             </div>
-            <div className="text-sm text-slate-500">
-              {family.details.length} product cards
-            </div>
+            <div className="text-sm text-slate-500">{productsWithImages.length} product cards</div>
           </div>
 
           <div className="grid auto-rows-fr gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {family.details.map((item) => {
+            {productsWithImages.map((item) => {
               const applicationBadges = getApplicationBadges(item.specs);
               const prioritySpecs = getPrioritySpecs(item.specs);
 
@@ -316,14 +316,16 @@ export default async function ProductFamilyPage({ params }: ProductFamilyPagePro
                   key={item.name}
                   className="flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-slate-200 bg-white shadow-sm"
                 >
-                  <div className="relative aspect-[4/3] bg-slate-100">
-                    <Image
-                      src={item.imageSrc ?? family.heroImageSrc}
-                      alt={item.imageAlt ?? item.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+                  {item.imageSrc ? (
+                    <div className="relative aspect-[4/3] bg-slate-100">
+                      <Image
+                        src={item.imageSrc}
+                        alt={item.imageAlt ?? item.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : null}
 
                   <div className="flex flex-1 flex-col p-5 sm:p-6">
                     <div className="min-w-0">
@@ -385,7 +387,7 @@ export default async function ProductFamilyPage({ params }: ProductFamilyPagePro
                           <ArrowRight className="h-4 w-4" />
                         </Link>
                         <Link
-                          href={`/contact?inquiryType=${encodeURIComponent("Request a Quote")}&productFamily=${encodeURIComponent(family.eyebrow)}&product=${encodeURIComponent(item.name)}`}
+                          href={`/contact?inquiryType=${encodeURIComponent("Request a Quote")}&productFamily=${encodeURIComponent(family.eyebrow)}&message=${encodeURIComponent(`I would like to request a quote for ${item.name}.`)}`}
                           className="inline-flex w-full items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-center text-sm font-medium text-slate-700 transition hover:bg-slate-100"
                         >
                           Inquire About This Product
@@ -397,6 +399,31 @@ export default async function ProductFamilyPage({ params }: ProductFamilyPagePro
               );
             })}
           </div>
+
+          {productsWithoutImages.length > 0 ? (
+            <div className="mt-10 rounded-[1.8rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                Additional Product Coverage
+              </div>
+              <h3 className="mt-3 text-xl font-semibold tracking-tight text-slate-950 sm:text-2xl">
+                Also supported within {family.eyebrow}
+              </h3>
+              <p className="mt-3 max-w-3xl text-base leading-7 text-slate-600">
+                These parts are part of the family range, but we are only showing products here
+                where a dedicated reference image is available.
+              </p>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {productsWithoutImages.map((item) => (
+                  <div
+                    key={`${family.slug}-${item.name}`}
+                    className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-medium text-slate-700"
+                  >
+                    {item.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </div>
       </section>
 

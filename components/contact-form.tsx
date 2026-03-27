@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import {
   submitContactForm,
@@ -26,7 +26,6 @@ type ContactFormProps = {
     inquiryType?: string;
     message?: string;
     phone?: string;
-    product?: string;
     productFamily?: string;
     quantity?: string;
   };
@@ -48,13 +47,17 @@ function SubmitButton() {
 
 export function ContactForm({ defaultValues }: ContactFormProps) {
   const [state, formAction] = useActionState(submitContactForm, initialState);
+  const [emailValue, setEmailValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState(defaultValues?.phone ?? "");
 
   return (
     <form action={formAction} className="mt-6 space-y-4">
+      <p className="text-xs text-slate-500">Fields marked with * are required.</p>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">
-            Your Name
+            Your Name <span aria-hidden="true" className="text-rose-500">*</span>
           </span>
           <input
             name="name"
@@ -67,7 +70,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
 
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">
-            Company Name
+            Company Name <span aria-hidden="true" className="text-rose-500">*</span>
           </span>
           <input
             name="company"
@@ -81,7 +84,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
 
       <label className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">
-          Email
+          Email <span aria-hidden="true" className="text-rose-500">*</span>
         </span>
         <input
           name="email"
@@ -89,33 +92,25 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
           placeholder="Email"
           autoComplete="email"
           type="email"
-          required
-        />
-      </label>
-
-      <label className="block">
-        <span className="mb-2 block text-sm font-medium text-slate-700">
-          Product / Part
-        </span>
-        <input
-          name="product"
-          className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
-          placeholder="Optional"
-          defaultValue={defaultValues?.product}
+          value={emailValue}
+          onChange={(event) => setEmailValue(event.target.value)}
+          required={!phoneValue.trim()}
         />
       </label>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">
-            Phone / WhatsApp
+            Phone / WhatsApp <span aria-hidden="true" className="text-rose-500">*</span>
           </span>
           <input
             name="phone"
             className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
             placeholder="+91 ..."
             autoComplete="tel"
-            defaultValue={defaultValues?.phone}
+            value={phoneValue}
+            onChange={(event) => setPhoneValue(event.target.value)}
+            required={!emailValue.trim()}
           />
         </label>
 
@@ -138,6 +133,10 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
         </label>
       </div>
 
+      <p className="-mt-2 text-xs text-slate-500">
+        Share at least one contact method: email or phone / WhatsApp.
+      </p>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">
@@ -154,6 +153,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
                 {family.eyebrow}
               </option>
             ))}
+            <option value="Other">Other</option>
           </select>
         </label>
 
@@ -181,7 +181,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
 
       <label className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">
-          Requirement Details
+          Requirement Details <span aria-hidden="true" className="text-rose-500">*</span>
         </span>
         <textarea
           name="message"

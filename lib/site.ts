@@ -5,9 +5,9 @@ export const siteConfig = {
   description:
     "OEM-grade machined components and sub-assemblies for global automotive supply chains.",
   url: "https://www.stallionautoparts.com",
-  phone: "+91 7971405204",
-  phoneHref: "+917971405204",
-  email: "info@stallionautoparts.com",
+  phone: "+91 9415086430",
+  phoneHref: "+919415086430",
+  email: "bharat@stallionautoparts.com",
   address:
     "D-3, UPSIDC Industrial Area, Chinhut Dewa Road, Lucknow - 226019, Uttar Pradesh, India",
   contactPerson: "Mr. Bharat Khanna, Managing Director",
@@ -17,7 +17,7 @@ export const siteConfig = {
 
 export const brandSignals = [
   "Established 1995",
-  "3,200 m² facility",
+  "5,200 m² facility",
   "200+ employees",
   "OEM and export support",
 ];
@@ -91,7 +91,7 @@ export const products = [
     title: "Gear Blanks",
     description:
       "Turned and machined blanks prepared for downstream gear cutting and repeatable production quality.",
-    imageSrc: "/images/Round-Gear-Blanks..jpg",
+    imageSrc: "/images/gear-blanks.png",
   },
   {
     title: "Steering Column Assemblies",
@@ -109,7 +109,7 @@ export const products = [
     title: "Clutch and Pedal Assemblies",
     description:
       "Fabricated and machined pedal-side components produced for durability and reliable dimensional control.",
-    imageSrc: "/images/Clutch-Break-Pedal-Assembly..jpg",
+    imageSrc: "/images/clutch-brake-pedal.png",
   },
   {
     title: "Steering Arms",
@@ -139,43 +139,51 @@ export const products = [
 
 export const trustedPartners = [
   {
-    name: "Tata Marcopolo",
-    logoSrc: "/partners/tata-marcopolo.jpg",
-    logoClassName: "scale-[1.2]",
+    name: "Tata Motors",
+    logoSrc: "/partners/tata-motors.png",
+    logoClassName: "scale-[1.42]",
+    logoContainerClassName: "h-[4.1rem] w-[7.5rem] sm:h-[4.75rem] sm:w-[8.75rem]",
   },
   {
     name: "Lohia Corp",
-    logoSrc: "/partners/lohia-corp.svg",
-    logoClassName: "scale-[1.35]",
+    logoSrc: "/partners/lohia-corp-new.jpg",
+    logoClassName: "scale-[1.08]",
+    logoContainerClassName: "w-[9.75rem] sm:w-[11.5rem]",
   },
   {
     name: "Switch Mobility",
-    logoSrc: "/partners/switch-mobility.svg",
-    logoClassName: "scale-[1.35]",
+    logoSrc: "/partners/switch-mobility.jpeg",
+    logoClassName: "scale-[1.1]",
+    logoContainerClassName: "w-[8.75rem] sm:w-[10.5rem]",
   },
   {
     name: "Ashok Leyland",
-    logoSrc: "/partners/ashok-leyland.jpg",
-    logoClassName: "scale-[1.2]",
+    logoSrc: "/partners/Ashok-Leyland-Logo.jpg",
+    logoClassName: "scale-[1.24]",
+    logoContainerClassName: "w-[9.5rem] sm:w-[11.25rem]",
   },
   {
     name: "Ordnance Factory",
     logoSrc: "/partners/ordnance-factory.webp",
-    logoClassName: "scale-[1.55]",
+    logoClassName: "scale-[1.14]",
+    logoContainerClassName: "h-[4.6rem] w-[4.6rem] sm:h-[5.35rem] sm:w-[5.35rem]",
   },
   {
     name: "ZF",
     logoSrc: "/partners/zf-logo.png",
-    logoClassName: "scale-[1.3]",
+    logoClassName: "scale-[1.1]",
+    logoContainerClassName: "h-[4.6rem] w-[4.6rem] sm:h-[5.35rem] sm:w-[5.35rem]",
   },
   {
     name: "Modern Coach Factory",
     logoSrc: "/partners/modern-coach-factory.jpg",
-    logoClassName: "scale-[1.5]",
+    logoClassName: "scale-[1.12]",
+    logoContainerClassName: "h-[4.6rem] w-[4.6rem] sm:h-[5.35rem] sm:w-[5.35rem]",
   },
   {
     name: "OMAX",
     logoSrc: "/partners/omax.svg",
-    logoClassName: "scale-[1.25]",
+    logoClassName: "scale-[1.14]",
+    logoContainerClassName: "w-[8.75rem] sm:w-[10.25rem]",
   },
 ];

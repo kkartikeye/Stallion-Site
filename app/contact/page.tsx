@@ -25,12 +25,15 @@ type ContactPageProps = {
 
 export default async function ContactPage({ searchParams }: ContactPageProps) {
   const params = searchParams ? await searchParams : undefined;
+  const fallbackMessage =
+    params?.product && !params.message
+      ? `I would like to discuss ${params.product}.`
+      : params?.message;
   const defaultValues = params
     ? {
         inquiryType: params.inquiryType,
-        message: params.message,
+        message: fallbackMessage,
         phone: params.phone,
-        product: params.product,
         productFamily: params.productFamily,
         quantity: params.quantity,
       }

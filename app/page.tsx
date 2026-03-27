@@ -53,7 +53,7 @@ const qualityHighlights = [
     icon: Ruler,
   },
   {
-    title: "3,200 m² facility",
+    title: "5,200 m² facility",
     description:
       "An organized manufacturing footprint that supports process flow, output planning, and scalable execution.",
     icon: Building2,
@@ -73,7 +73,7 @@ const aboutHighlights = [
     icon: Building2,
   },
   {
-    value: "3,200 m²",
+    value: "5,200 m²",
     label: "Manufacturing Footprint",
     icon: Boxes,
   },
@@ -103,7 +103,7 @@ export default function HomePage() {
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
         </div>
 
-        <div className="container-site relative grid gap-10 py-16 sm:py-20 lg:min-h-[78vh] lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-24">
+        <div className="container-site relative grid gap-8 py-12 sm:gap-10 sm:py-16 lg:min-h-[72vh] lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-20">
           <div>
             <div className="hero-fade-up inline-flex flex-wrap items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2.5 text-sm font-semibold tracking-wide text-slate-200 backdrop-blur-sm sm:gap-4 sm:px-6 sm:py-3 sm:text-base">
               <span>OEM Manufacturing</span>
@@ -138,6 +138,7 @@ export default function HomePage() {
                 View Capabilities
               </Link>
             </div>
+
           </div>
 
           <div className="relative mx-auto w-full max-w-[640px]">
@@ -184,6 +185,16 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-slate-200 bg-white py-8 sm:py-10">
+        <div className="container-site">
+          <div className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+            Trusted by customers and industry partners
+          </div>
+
+          <TrustedPartnersRibbon partners={trustedPartners} />
         </div>
       </section>
 
@@ -388,18 +399,6 @@ export default function HomePage() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      <section className="section-space">
-        <div className="container-site">
-          <SectionHeading
-            eyebrow="Trusted By"
-            title="Customers and industry relationships built over years of manufacturing support"
-            description="A flowing snapshot of organizations associated with Stallion’s customer and partner network."
-          />
-
-          <TrustedPartnersRibbon partners={trustedPartners} />
         </div>
       </section>
 

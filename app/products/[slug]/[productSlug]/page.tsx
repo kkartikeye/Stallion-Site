@@ -42,7 +42,7 @@ export async function generateMetadata({
     title: data.product.name,
     description: data.product.description,
     path: `/products/${data.family.slug}/${productSlug}`,
-    image: data.product.imageSrc ?? data.family.heroImageSrc,
+    image: data.product.imageSrc,
   });
 }
 
@@ -61,9 +61,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <PageHero
         title={product.name}
         description={product.description}
-        imageSrc={product.imageSrc ?? family.heroImageSrc}
-        imageAlt={product.imageAlt ?? family.heroLegend}
-        imageLegend={family.eyebrow}
+        imageSrc={product.imageSrc}
+        imageAlt={product.imageAlt ?? product.name}
+        imageLegend={product.imageSrc ? family.eyebrow : undefined}
       />
 
       <section className="section-space">
@@ -143,14 +143,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
-                href={`/contact?inquiryType=${encodeURIComponent("Request a Quote")}&productFamily=${encodeURIComponent(family.eyebrow)}&product=${encodeURIComponent(product.name)}&message=${encodeURIComponent(`I would like to discuss ${product.name}.`)}`}
+                href={`/contact?inquiryType=${encodeURIComponent("Request a Quote")}&productFamily=${encodeURIComponent(family.eyebrow)}&message=${encodeURIComponent(`I would like to discuss ${product.name}.`)}`}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 sm:w-auto sm:justify-start"
               >
                 Request a Product Quote
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
-                href={`/contact?inquiryType=${encodeURIComponent("Product Discussion")}&productFamily=${encodeURIComponent(family.eyebrow)}&product=${encodeURIComponent(product.name)}&message=${encodeURIComponent(`I would like to discuss ${product.name} for our application.`)}`}
+                href={`/contact?inquiryType=${encodeURIComponent("Product Discussion")}&productFamily=${encodeURIComponent(family.eyebrow)}&message=${encodeURIComponent(`I would like to discuss ${product.name} for our application.`)}`}
                 className="inline-flex w-full items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-slate-100 sm:w-auto sm:justify-start"
               >
                 Start Product Inquiry

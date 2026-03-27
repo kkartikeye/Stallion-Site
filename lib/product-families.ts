@@ -173,7 +173,7 @@ export const productFamilies: ProductFamily[] = [
         legend: "Pedal Levers",
       },
       {
-        src: "/images/Clutch-Break-Pedal-Assembly..jpg",
+        src: "/images/clutch-brake-pedal.png",
         alt: "Clutch brake pedal assembly",
         legend: "Pedal Assembly",
       },
@@ -269,7 +269,7 @@ export const productFamilies: ProductFamily[] = [
         legend: "Finished Crown Wheels",
       },
       {
-        src: "/images/Round-Gear-Blanks..jpg",
+        src: "/images/gear-blanks.png",
         alt: "Round gear blanks",
         legend: "Gear Blanks",
       },
@@ -306,7 +306,7 @@ export const productFamilies: ProductFamily[] = [
         name: "Round Gear Blanks",
         description:
           "Mild-steel gear blanks intended for downstream automotive applications, supplied with coated finish and standard-size profile.",
-        imageSrc: "/images/Round-Gear-Blanks..jpg",
+        imageSrc: "/images/gear-blanks.png",
         imageAlt: "Round gear blanks",
         specs: [
           { label: "Application", value: "Automobile industry" },
@@ -367,11 +367,11 @@ export const productFamilies: ProductFamily[] = [
       "The clutch-side range brings together housing components and actuation parts that often sit within the same sourcing conversation for truck and heavy-duty vehicle programs.",
       "Grouping them this way makes it easier to present the application fit, material choices, and manufacturing style without overloading the main products page with one long component stack.",
     ],
-    heroImageSrc: "/images/Engine-Clutch-Housing..jpg",
+    heroImageSrc: "/images/engine-clutch-housing.png",
     heroLegend: "Clutch Housing Components",
     gallery: [
       {
-        src: "/images/Engine-Clutch-Housing..jpg",
+        src: "/images/engine-clutch-housing.png",
         alt: "Engine clutch housing",
         legend: "Clutch Housing",
       },
@@ -381,7 +381,7 @@ export const productFamilies: ProductFamily[] = [
         legend: "Release Yoke",
       },
       {
-        src: "/images/Clutch-Break-Pedal-Assembly..jpg",
+        src: "/images/clutch-brake-pedal.png",
         alt: "Clutch brake pedal assembly",
         legend: "Pedal Assembly",
       },
@@ -403,7 +403,7 @@ export const productFamilies: ProductFamily[] = [
         name: "Engine Clutch Housing",
         description:
           "A powder-coated clutch-housing component for truck and bus use, built from alloy-steel casting for mechanical systems.",
-        imageSrc: "/images/Engine-Clutch-Housing..jpg",
+        imageSrc: "/images/engine-clutch-housing.png",
         imageAlt: "Engine clutch housing",
         specs: [
           { label: "Application", value: "Trucks and buses" },
@@ -586,7 +586,7 @@ export const productFamilies: ProductFamily[] = [
         legend: "Machine Shop",
       },
       {
-        src: "/images/Spring-Pins-Lever-Pins..jpg",
+        src: "/images/spring-pins.png",
         alt: "Spring pins lever pins",
         legend: "Pins And Turned Parts",
       },
@@ -656,7 +656,7 @@ export const productFamilies: ProductFamily[] = [
         name: "Spring Pins Lever Pins",
         description:
           "Pin-type automotive parts used in lever-side applications, with polished finish and mechanical operation for heavy-duty use.",
-        imageSrc: "/images/Spring-Pins-Lever-Pins..jpg",
+        imageSrc: "/images/spring-pins.png",
         imageAlt: "Spring pins lever pins",
         specs: [
           { label: "Part type", value: "Lever pins" },

@@ -92,7 +92,11 @@ export function PageHero({
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
       </div>
 
-      <div className="container-site relative grid gap-8 py-14 sm:gap-10 sm:py-16 md:py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div
+        className={`container-site relative grid gap-8 py-14 sm:gap-10 sm:py-16 md:py-20 ${
+          imageSrc ? "lg:grid-cols-[0.95fr_1.05fr] lg:items-center" : ""
+        }`}
+      >
         <div>
           <h1 className="hero-fade-up hero-fade-up-delay-1 max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
             {title}
@@ -129,18 +133,18 @@ export function PageHero({
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-[680px]">
-          <div className="hero-glow absolute -inset-3 hidden rounded-[2.5rem] bg-gradient-to-br from-sky-400/12 via-transparent to-white/5 blur-2xl sm:block sm:-inset-5" />
-          <div className="hero-float absolute -right-4 -top-5 hidden h-20 w-20 rounded-full border border-white/10 bg-white/[0.04] blur-sm sm:block sm:h-24 sm:w-24" />
-          <div
-            className="hero-fade-up hero-fade-up-delay-3 relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-3 shadow-[0_30px_90px_rgba(2,6,23,0.6)] backdrop-blur-xl sm:rounded-[2rem] sm:p-5"
-          >
+        {imageSrc ? (
+          <div className="relative mx-auto w-full max-w-[680px]">
+            <div className="hero-glow absolute -inset-3 hidden rounded-[2.5rem] bg-gradient-to-br from-sky-400/12 via-transparent to-white/5 blur-2xl sm:block sm:-inset-5" />
+            <div className="hero-float absolute -right-4 -top-5 hidden h-20 w-20 rounded-full border border-white/10 bg-white/[0.04] blur-sm sm:block sm:h-24 sm:w-24" />
             <div
-              className={`relative min-h-[220px] overflow-hidden rounded-[1.25rem] border border-white/10 bg-slate-800 sm:min-h-[300px] sm:rounded-[1.5rem] ${
-                imageContainerClassName ?? ""
-              }`}
+              className="hero-fade-up hero-fade-up-delay-3 relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-3 shadow-[0_30px_90px_rgba(2,6,23,0.6)] backdrop-blur-xl sm:rounded-[2rem] sm:p-5"
             >
-              {imageSrc ? (
+              <div
+                className={`relative min-h-[220px] overflow-hidden rounded-[1.25rem] border border-white/10 bg-slate-800 sm:min-h-[300px] sm:rounded-[1.5rem] ${
+                  imageContainerClassName ?? ""
+                }`}
+              >
                 <Image
                   src={imageSrc}
                   alt={imageAlt ?? title}
@@ -148,19 +152,18 @@ export function PageHero({
                   quality={imageQuality}
                   className={`hero-image-pan ${imageClassName ?? "object-cover"}`}
                 />
-              ) : null}
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/78 via-slate-950/18 to-transparent" />
-              {imageLegend ? (
-                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-                  <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-100 backdrop-blur-sm sm:px-4 sm:text-xs sm:tracking-[0.18em]">
-                    {imageLegend}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/78 via-slate-950/18 to-transparent" />
+                {imageLegend ? (
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
+                    <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-100 backdrop-blur-sm sm:px-4 sm:text-xs sm:tracking-[0.18em]">
+                      {imageLegend}
+                    </div>
                   </div>
-                </div>
-              ) : null}
+                ) : null}
+              </div>
             </div>
-
           </div>
-        </div>
+        ) : null}
       </div>
     </section>
   );

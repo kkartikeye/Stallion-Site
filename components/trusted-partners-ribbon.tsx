@@ -7,6 +7,7 @@ type TrustedPartner = {
   name: string;
   logoSrc: string;
   logoClassName?: string;
+  logoContainerClassName?: string;
 };
 
 type TrustedPartnersRibbonProps = {
@@ -155,10 +156,10 @@ export function TrustedPartnersRibbon({
   }
 
   return (
-    <div className="mt-10">
+    <div className="mt-8">
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-white to-transparent sm:w-12" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-white to-transparent sm:w-12" />
 
         <div
           ref={trackRef}
@@ -169,14 +170,18 @@ export function TrustedPartnersRibbon({
           onDragStart={(event) => {
             event.preventDefault();
           }}
-          className="no-scrollbar flex cursor-grab select-none gap-4 overflow-x-auto overflow-y-hidden px-1 pb-1 [touch-action:pan-y] [will-change:scroll-position]"
+          className="no-scrollbar flex cursor-grab select-none gap-3 overflow-x-auto overflow-y-hidden px-1 pb-1 [touch-action:pan-y] [will-change:scroll-position] sm:gap-4"
         >
           {duplicatedPartners.map((partner, index) => (
             <div
               key={`${partner.name}-${index}`}
-              className="flex w-[184px] shrink-0 items-center justify-center rounded-[1.5rem] border border-slate-200 bg-white px-4 py-5 shadow-sm sm:w-[220px] sm:rounded-[1.75rem] sm:px-6 sm:py-6"
+              className="flex h-20 w-[168px] shrink-0 items-center justify-center overflow-hidden rounded-[1.3rem] border border-slate-200 bg-white px-3 py-4 shadow-sm sm:h-28 sm:w-[220px] sm:rounded-[1.75rem] sm:px-6 sm:py-6"
             >
-              <div className="relative h-14 w-[132px] sm:h-16 sm:w-[170px]">
+              <div
+                className={`relative h-12 w-[120px] sm:h-16 sm:w-[170px] ${
+                  partner.logoContainerClassName ?? ""
+                }`}
+              >
                 <Image
                   src={partner.logoSrc}
                   alt={`${partner.name} logo`}
