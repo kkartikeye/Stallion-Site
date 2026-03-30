@@ -22,27 +22,27 @@ export const metadata = createPageMetadata({
 
 const qualityPrinciples = [
   {
-    title: "Built Into The Process",
+    title: "No Surprises at Final Inspection",
     description:
-      "Quality is reinforced through process planning, machining discipline, tooling attention, and production control rather than being treated only as a final-stage sorting activity.",
+      "Quality is enforced at every machining step — not treated as an end-of-line sort. Process planning, tooling discipline, and in-step checks prevent conformity issues before they reach dispatch.",
     icon: Settings,
   },
   {
-    title: "Detailed Test Procedures",
+    title: "Checked Against Customer Drawings",
     description:
-      "Inspection practices are tied to customer drawings, defined checkpoints, and detailed test procedures to support conformity and repeatability.",
+      "Every component is inspected against the customer's stated drawings and defined tolerance requirements. No job leaves without being measured against the specification it was made to.",
     icon: ClipboardCheck,
   },
   {
-    title: "Gauge-Backed Finishing Control",
+    title: "Measured Before Release",
     description:
-      "Grinding, gauging, and closer-tolerance operations support parts where dimensional accuracy and finishing control matter more critically.",
+      "Shafts, ground bores, and precision-turned parts are gauged against customer-specified tolerances before release — not estimated. Closer-tolerance operations are backed by dedicated gauge checks.",
     icon: Gauge,
   },
   {
     title: "Continuous Improvement Habits",
     description:
-      "Shop-floor routines are supported by Kanban thinking, Kaizen habits, and an operating mindset that looks for practical improvements over time.",
+      "Kaizen and Kanban routines on the shop floor reduce variability over time, tighten response to production issues, and build the execution discipline that OEM supply programs depend on.",
     icon: Workflow,
   },
 ];

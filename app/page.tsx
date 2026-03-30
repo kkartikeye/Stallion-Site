@@ -68,8 +68,8 @@ const qualityHighlights = [
 
 const aboutHighlights = [
   {
-    value: "1995",
-    label: "Established",
+    value: "30 Years",
+    label: "In Manufacturing",
     icon: Building2,
   },
   {
@@ -114,7 +114,7 @@ export default function HomePage() {
             </div>
 
             <h1 className="hero-fade-up hero-fade-up-delay-1 mt-6 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:mt-8 sm:text-5xl md:text-6xl lg:text-7xl">
-              Precision Automotive Components Built for Reliable Supply
+              30 Years Manufacturing Precision Components for India&apos;s Leading OEMs
             </h1>
 
             <p className="hero-fade-up hero-fade-up-delay-2 mt-5 max-w-2xl text-base leading-7 text-slate-300 sm:mt-6 sm:text-lg md:text-xl md:leading-8">
@@ -191,8 +191,12 @@ export default function HomePage() {
       <section className="border-b border-slate-200 bg-white py-8 sm:py-10">
         <div className="container-site">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-            Trusted by customers and industry partners
+            Trusted by leading OEMs and defence customers
           </div>
+          <p className="mt-2 max-w-2xl text-base leading-7 text-slate-600">
+            Supplying machined components and assemblies to India&apos;s largest vehicle manufacturers,
+            defence customers, and global industrial buyers for over two decades.
+          </p>
 
           <TrustedPartnersRibbon partners={trustedPartners} />
         </div>

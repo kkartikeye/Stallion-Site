@@ -56,8 +56,8 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
               Start with an RFQ, sourcing requirement, or product inquiry.
             </h1>
             <p className="hero-fade-up hero-fade-up-delay-2 mt-5 max-w-3xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
-              Share your requirement and the team can respond with the right next step for
-              quotation, capability fit, or manufacturing discussion.
+              Share your drawing or requirement and the team will review capability fit and
+              respond with a direct quote discussion. Typically within 1 business day.
             </p>
 
             <div className="hero-fade-up hero-fade-up-delay-3 mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -159,8 +159,9 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
           <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
             <h2 className="text-xl font-semibold sm:text-2xl">Inquiry Form</h2>
             <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
-              Share your requirement and the team will respond with the next steps, capability
-              fit, or quotation details.
+              Fill in your requirement below. The team reviews each inquiry directly and responds
+              with capability fit, quotation details, or the right next step — typically within
+              1 business day.
             </p>
 
             <ContactForm defaultValues={defaultValues} />

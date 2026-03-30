@@ -26,8 +26,8 @@ export const metadata = createPageMetadata({
 
 const companyHighlights = [
   {
-    value: "1995",
-    label: "Established",
+    value: "30 Years",
+    label: "In Manufacturing",
     icon: Building2,
   },
   {
@@ -92,7 +92,7 @@ export default function AboutPage() {
     <>
       <PageHero
         title="About Us"
-        description="Precision manufacturing from Lucknow, India for OEM, industrial, and export customers."
+        description="Thirty years of precision manufacturing from Lucknow, India for OEM, industrial, and export customers."
         imageSrc="/images/workforce-thumbsup.png"
         imageAlt="Stallion Auto Parts team members standing together at the facility"
         imageLegend="Stallion Team"
@@ -151,22 +151,24 @@ export default function AboutPage() {
 
           <div className="space-y-5 text-base leading-8 text-slate-600 md:text-lg lg:pt-20 xl:pt-24">
             <p>
-              Stallion Auto Parts was established in 1995 with the aim of building a serious
-              Indian manufacturing business for precision automotive and engineering components.
-              Over time, the company has developed into a dependable production partner for
-              customers who value repeatability, practical problem-solving, and long-term supply
-              confidence.
+              Stallion Auto Parts was founded in 1995 by Late V.K. Khanna — an engineer who set
+              out to build a serious Indian manufacturing business grounded in precision, process
+              discipline, and a practical approach to customer requirements. His engineering
+              background shaped a core identity that has never changed: a manufacturer that earns
+              customer trust through consistent execution, not claims.
             </p>
             <p>
-              The business manufactures machined components, fabricated parts, and sub-assemblies
-              for automotive and allied engineering applications. Its operating model combines
-              in-house machining capability with a disciplined production setup and carefully
-              managed supplier relationships for supporting broader assembly and component needs.
+              Over three decades, that foundation has grown into a dependable production partner
+              for customers who value repeatability, practical problem-solving, and long-term
+              supply confidence. The business manufactures machined components, fabricated parts,
+              and sub-assemblies for automotive and allied engineering applications, combining
+              in-house machining capability with a disciplined production setup.
             </p>
             <p>
-              Today, Stallion continues to serve customers looking for a manufacturing partner that
-              can respond to drawings, development requirements, repeat production, and commercial
-              supply expectations with consistency and accountability.
+              Today, under the leadership of Bharat Khanna, Stallion continues to serve customers
+              looking for a manufacturing partner that responds to drawings, development
+              requirements, repeat production, and commercial supply expectations with consistency
+              and accountability.
             </p>
 
             <div className="grid gap-4 pt-2 md:grid-cols-2">
@@ -312,8 +314,11 @@ export default function AboutPage() {
                   Founder Legacy
                 </div>
                 <p className="mt-3 text-base leading-7 text-slate-300">
-                  Late V.K. Khanna&apos;s engineering background helped shape the company&apos;s
-                  long-standing focus on practical manufacturing capability and disciplined growth.
+                  Late V.K. Khanna founded Stallion in 1995 with a clear purpose: build a
+                  precision manufacturing business that earns customer trust through consistent
+                  execution. His engineering outlook shaped the company&apos;s emphasis on
+                  drawing-led production, process discipline, and long-term reliability —
+                  values that continue to guide operations today.
                 </p>
               </div>
               <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
