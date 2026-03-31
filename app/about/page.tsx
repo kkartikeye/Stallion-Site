@@ -26,8 +26,8 @@ export const metadata = createPageMetadata({
 
 const companyHighlights = [
   {
-    value: "1995",
-    label: "Established",
+    value: "30 Years",
+    label: "In Manufacturing",
     icon: Building2,
   },
   {
@@ -92,10 +92,9 @@ export default function AboutPage() {
     <>
       <PageHero
         title="About Us"
-        description="Precision manufacturing from Lucknow, India for OEM, industrial, and export customers."
+        description="Thirty years of precision manufacturing from Lucknow, India for OEM, industrial, and export customers."
         imageSrc="/images/workforce-thumbsup.png"
         imageAlt="Stallion Auto Parts team members standing together at the facility"
-        imageLegend="Stallion Team"
         tertiaryAction={{
           href: `tel:${siteConfig.phoneHref}`,
           label: "Call Sales",
@@ -151,22 +150,24 @@ export default function AboutPage() {
 
           <div className="space-y-5 text-base leading-8 text-slate-600 md:text-lg lg:pt-20 xl:pt-24">
             <p>
-              Stallion Auto Parts was established in 1995 with the aim of building a serious
-              Indian manufacturing business for precision automotive and engineering components.
-              Over time, the company has developed into a dependable production partner for
-              customers who value repeatability, practical problem-solving, and long-term supply
-              confidence.
+              Stallion Auto Parts was founded in 1995 by Late V.K. Khanna — an engineer who set
+              out to build a serious Indian manufacturing business grounded in precision, process
+              discipline, and a practical approach to customer requirements. His engineering
+              background shaped a core identity that has never changed: a manufacturer that earns
+              customer trust through consistent execution, not claims.
             </p>
             <p>
-              The business manufactures machined components, fabricated parts, and sub-assemblies
-              for automotive and allied engineering applications. Its operating model combines
-              in-house machining capability with a disciplined production setup and carefully
-              managed supplier relationships for supporting broader assembly and component needs.
+              Over three decades, that foundation has grown into a dependable production partner
+              for customers who value repeatability, practical problem-solving, and long-term
+              supply confidence. The business manufactures machined components, fabricated parts,
+              and sub-assemblies for automotive and allied engineering applications, combining
+              in-house machining capability with a disciplined production setup.
             </p>
             <p>
-              Today, Stallion continues to serve customers looking for a manufacturing partner that
-              can respond to drawings, development requirements, repeat production, and commercial
-              supply expectations with consistency and accountability.
+              Today, under the leadership of Bharat Khanna, Stallion continues to serve customers
+              looking for a manufacturing partner that responds to drawings, development
+              requirements, repeat production, and commercial supply expectations with consistency
+              and accountability.
             </p>
 
             <div className="grid gap-4 pt-2 md:grid-cols-2">
@@ -263,27 +264,26 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-slate-950 section-space text-white">
-        <div className="container-site grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <div>
+      <section className="bg-slate-950 py-14 text-white sm:py-16 md:py-[4.5rem]">
+        <div className="container-site grid gap-9 lg:grid-cols-[1.05fr_0.95fr] lg:items-center xl:gap-12">
+          <div className="max-w-2xl">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-slate-400">
               Leadership Approach
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
               Leadership shaped by engineering judgment, manufacturing discipline, and long-term customer relationships.
             </h2>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-              Stallion&apos;s leadership approach reflects practical decision-making, production
-              discipline, and a steady commitment to dependable customer support. The company
-              continues to build on foundations shaped by Late V.K. Khanna&apos;s engineering-led
-              outlook and long-view approach to manufacturing.
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+              Stallion&apos;s leadership approach reflects practical decision-making, disciplined
+              manufacturing, and dependable customer support built on the engineering-led
+              foundation established by Late V.K. Khanna.
             </p>
           </div>
 
-          <div className="space-y-4">
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-                <div className="relative h-52 w-full overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:h-28 sm:w-24 sm:shrink-0">
+          <div className="grid gap-5 md:grid-cols-2 md:auto-rows-fr">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:col-span-2 sm:p-7">
+              <div className="grid gap-5 sm:grid-cols-[6.75rem_minmax(0,1fr)] sm:items-center">
+                <div className="relative h-44 w-full overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:h-[6.75rem] sm:w-[6.75rem]">
                   <Image
                     src="/images/bharat-khanna.jpeg"
                     alt="Bharat Khanna"
@@ -299,32 +299,29 @@ export default function AboutPage() {
                     Bharat Khanna
                   </div>
                   <p className="mt-3 text-base leading-7 text-slate-300">
-                    As Managing Director, he continues the company&apos;s focus on disciplined
-                    manufacturing, practical execution, and long-term customer relationships built
-                    on consistency and trust.
+                    As Managing Director, he carries forward a focus on disciplined manufacturing,
+                    practical execution, and long-term customer relationships built on trust.
                   </p>
                 </div>
               </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                <div className="text-sm font-medium uppercase tracking-[0.16em] text-slate-400">
-                  Founder Legacy
-                </div>
-                <p className="mt-3 text-base leading-7 text-slate-300">
-                  Late V.K. Khanna&apos;s engineering background helped shape the company&apos;s
-                  long-standing focus on practical manufacturing capability and disciplined growth.
-                </p>
+            <div className="h-full rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-7">
+              <div className="text-sm font-medium uppercase tracking-[0.16em] text-slate-400">
+                Founder Legacy
               </div>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                <div className="text-sm font-medium uppercase tracking-[0.16em] text-slate-400">
-                  Leadership Focus
-                </div>
-                <p className="mt-3 text-base leading-7 text-slate-300">
-                  The emphasis remains on building dependable customer relationships through steady
-                  execution, clear communication, and long-term manufacturing support.
-                </p>
+              <p className="mt-3 text-base leading-7 text-slate-300">
+                Founded in 1995 by Late V.K. Khanna, Stallion was built around precision
+                manufacturing, drawing-led production, and dependable execution.
+              </p>
+            </div>
+            <div className="h-full rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-7">
+              <div className="text-sm font-medium uppercase tracking-[0.16em] text-slate-400">
+                Leadership Focus
               </div>
+              <p className="mt-3 text-base leading-7 text-slate-300">
+                The emphasis remains on steady execution, clear communication, and long-term
+                support for customer programs.
+              </p>
             </div>
           </div>
         </div>

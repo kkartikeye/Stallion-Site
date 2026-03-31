@@ -68,8 +68,8 @@ const qualityHighlights = [
 
 const aboutHighlights = [
   {
-    value: "1995",
-    label: "Established",
+    value: "30 Years",
+    label: "In Manufacturing",
     icon: Building2,
   },
   {
@@ -191,8 +191,12 @@ export default function HomePage() {
       <section className="border-b border-slate-200 bg-white py-8 sm:py-10">
         <div className="container-site">
           <div className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-            Trusted by customers and industry partners
+            Trusted by leading OEMs and defence customers
           </div>
+          <p className="mt-2 max-w-2xl text-base leading-7 text-slate-600">
+            Supplying machined components and assemblies to India&apos;s largest vehicle manufacturers,
+            defence customers, and global industrial buyers for over two decades.
+          </p>
 
           <TrustedPartnersRibbon partners={trustedPartners} />
         </div>

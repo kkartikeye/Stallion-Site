@@ -9,7 +9,7 @@ import { productFamilies } from "@/lib/product-families";
 export const metadata = createPageMetadata({
   title: "Product Families",
   description:
-    "Browse Stallion Auto Parts product families across steering systems, lever assemblies, driveline parts, clutch-side components, support hardware, and CNC-machined products.",
+    "Browse Stallion Auto Parts product families across steering systems, lever assemblies, driveline parts, clutch-side components, engine pulleys, related hardware, and CNC-machined products.",
   path: "/products",
   image: "/images/Steering-Column-Assemblies..jpg",
 });
@@ -61,7 +61,7 @@ export default function ProductsPage() {
     <>
       <PageHero
         title="Products"
-        description="Representative product families across steering systems, lever assemblies, crown wheels, clutch-side parts, support hardware, and CNC-machined components for OEM and engineering programs."
+        description="Representative product families across steering systems, lever assemblies, crown wheels, clutch-side parts, engine pulleys, related hardware, and CNC-machined components for OEM and engineering programs."
         imageSrc="/images/Steering-Column-Assemblies..jpg"
         imageAlt="Representative steering column assemblies manufactured by Stallion Auto Parts"
         imageLegend="Representative Product Range"
@@ -80,7 +80,7 @@ export default function ProductsPage() {
           <div className="space-y-5 text-lg leading-8 text-slate-600">
             <p>
               Stallion’s representative range spans steering-side assemblies, lever systems,
-              drivetrain components, clutch-side parts, support hardware, and broader CNC
+              drivetrain components, clutch-side parts, engine pulleys and related hardware, and broader CNC
               machined items produced for automotive and engineering use.
             </p>
             <p>

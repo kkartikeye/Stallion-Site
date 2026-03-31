@@ -260,18 +260,18 @@ export const productFamilies: ProductFamily[] = [
       "The crown-wheel and gear-side range is naturally more technical than some of the assembly-led product families, so the emphasis here is on material, finish, and machining fit.",
       "For sourcing teams, it is often more useful to view this as a driveline-family capability rather than a set of isolated items, especially when requirements evolve from blanks to machined or finished parts.",
     ],
-    heroImageSrc: "/images/finished crown wheel.png",
-    heroLegend: "Finished Crown Wheels",
+    heroImageSrc: "/images/gear-blanks.png",
+    heroLegend: "Gear Blanks",
     gallery: [
       {
-        src: "/images/finished crown wheel.png",
-        alt: "Finished crown wheels",
-        legend: "Finished Crown Wheels",
+        src: "/images/gear-blanks.png",
+        alt: "Machined gear blanks",
+        legend: "Gear Blanks",
       },
       {
-        src: "/images/gear-blanks.png",
-        alt: "Round gear blanks",
-        legend: "Gear Blanks",
+        src: "/images/Round-Gear-Blanks..jpg",
+        alt: "Round gear blank",
+        legend: "Round Gear Blank",
       },
     ],
     highlights: [
@@ -306,8 +306,8 @@ export const productFamilies: ProductFamily[] = [
         name: "Round Gear Blanks",
         description:
           "Mild-steel gear blanks intended for downstream automotive applications, supplied with coated finish and standard-size profile.",
-        imageSrc: "/images/gear-blanks.png",
-        imageAlt: "Round gear blanks",
+        imageSrc: "/images/Round-Gear-Blanks..jpg",
+        imageAlt: "Round gear blank",
         specs: [
           { label: "Application", value: "Automobile industry" },
           { label: "Material", value: "Mild steel" },
@@ -442,19 +442,19 @@ export const productFamilies: ProductFamily[] = [
   },
   {
     slug: "hubs-pulleys-and-support-parts",
-    eyebrow: "Running And Support Parts",
-    title: "Wheel hubs, brake drums, pulleys, hinges, and related support components",
-    overviewTitle: "Support components for running systems, engines, and vehicle-side hardware.",
+    eyebrow: "Engine Pulleys And Related Hardware",
+    title: "Engine pulleys, wheel hubs, brake drums, hinges, and related hardware",
+    overviewTitle: "Engine pulleys and related hardware for heavy-duty vehicle programs.",
     heroDescription:
-      "Representative support components including wheel hubs, brake drums, pulleys, hinges, track rollers, and bracket-type heavy-duty vehicle parts.",
+      "Representative engine pulleys alongside wheel hubs, brake drums, hinges, track rollers, and bracket-type heavy-duty vehicle parts.",
     overviewDescription:
-      "Beyond assemblies and lever systems, the product range also includes a wider set of support components used across heavy-duty vehicle, suspension-side, and engineering applications.",
+      "This family highlights cast-iron diesel engine pulleys together with wheel hubs, brake drums, hinges, and other related hardware used across heavy-duty vehicle and engineering applications.",
     body: [
-      "This family works best as a grouped support-components page because the parts are functionally different but still sit within the same broader sourcing context for commercial vehicle programs.",
-      "It is also a better place to show image-led variety, since these parts often tell their story visually through form, scale, and end use.",
+      "This family works best as a grouped engine-pulley and hardware page because the parts are functionally different but still sit within the same broader sourcing context for commercial vehicle programs.",
+      "It also helps to lead with the pulley range visually, while still showing the adjacent hubs, drums, hinges, rollers, and brackets that buyers often source alongside it.",
     ],
     heroImageSrc: "/images/Cast-Iron-Diesel-Engine-Pulley..jpg",
-    heroLegend: "Support Components",
+    heroLegend: "Engine Pulleys",
     gallery: [
       {
         src: "/images/Truck-Wheel-Hubs..jpg",
@@ -473,21 +473,34 @@ export const productFamilies: ProductFamily[] = [
       },
     ],
     highlights: [
-      { label: "Applications", value: "Heavy-duty vehicle running systems" },
-      { label: "Representative parts", value: "Hubs, drums, pulleys, rollers, and brackets" },
+      { label: "Applications", value: "Heavy-duty vehicle engines and running systems" },
+      { label: "Representative parts", value: "Engine pulleys, hubs, drums, rollers, and brackets" },
       { label: "Typical materials", value: "Cast iron, ductile iron, steel, and formed parts" },
       { label: "Vehicle fit", value: "Truck, bus, and engineering applications" },
     ],
     representativeParts: [
+      "Cast Iron Diesel Engine Pulley",
       "Truck Wheel Hubs",
       "Truck Brake Drum",
-      "Cast Iron Diesel Engine Pulley",
       "Track Rollers",
       "Spring Hanger Brackets",
       "Automobile Door Hinge",
       "Engine Mounting Arms Steering Arms",
     ],
     details: [
+      {
+        name: "Cast Iron Diesel Engine Pulley",
+        description:
+          "A powder-coated cast-iron pulley for vehicle-engine applications, suited to heavy-duty use and defined dimensional fitment.",
+        imageSrc: "/images/Cast-Iron-Diesel-Engine-Pulley..jpg",
+        imageAlt: "Cast iron diesel engine pulley",
+        specs: [
+          { label: "Application", value: "Vehicle engine" },
+          { label: "Material", value: "Cast iron" },
+          { label: "Size", value: "150 mm" },
+          { label: "Load capacity", value: "1 tonne" },
+        ],
+      },
       {
         name: "Truck Wheel Hubs",
         description:
@@ -512,19 +525,6 @@ export const productFamilies: ProductFamily[] = [
           { label: "Material", value: "Cast iron" },
           { label: "Size", value: "16.5 inch" },
           { label: "Surface", value: "Polished" },
-        ],
-      },
-      {
-        name: "Cast Iron Diesel Engine Pulley",
-        description:
-          "A powder-coated cast-iron pulley for vehicle-engine applications, suited to heavy-duty use and defined dimensional fitment.",
-        imageSrc: "/images/Cast-Iron-Diesel-Engine-Pulley..jpg",
-        imageAlt: "Cast iron diesel engine pulley",
-        specs: [
-          { label: "Application", value: "Vehicle engine" },
-          { label: "Material", value: "Cast iron" },
-          { label: "Size", value: "150 mm" },
-          { label: "Load capacity", value: "1 tonne" },
         ],
       },
       {
@@ -577,23 +577,23 @@ export const productFamilies: ProductFamily[] = [
       "The CNC page works best as its own family because the products are less about one common vehicle-side function and more about a manufacturing route: machining, turning, and customer-driven specification control.",
       "That makes it a good place to show both representative machined parts and the broader production model behind them.",
     ],
-    heroImageSrc: "/images/machine-shop.png",
+    heroImageSrc: "/images/agni-gut.png",
     heroLegend: "CNC Production",
     gallery: [
       {
-        src: "/images/machine-shop.png",
-        alt: "Machine shop",
-        legend: "Machine Shop",
+        src: "/images/agni-gut.png",
+        alt: "Agni CNC machining center on the shop floor",
+        legend: "Agni CNC Machine",
       },
       {
-        src: "/images/spring-pins.png",
-        alt: "Spring pins lever pins",
-        legend: "Pins And Turned Parts",
+        src: "/images/cnc machine floor.png",
+        alt: "CNC machine floor with machining center on the shop floor",
+        legend: "CNC Production",
       },
       {
-        src: "/images/Turning-Tubes..jpg",
-        alt: "Turning tubes",
-        legend: "Turned Components",
+        src: "/images/agni-machine.jpg",
+        alt: "CNC machining setup on the production floor",
+        legend: "In-House CNC Setup",
       },
     ],
     highlights: [

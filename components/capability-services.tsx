@@ -98,7 +98,7 @@ const services: CapabilityService[] = [
     imageBlendMode: "multiply",
     families: [
       { label: "Driveline components", href: "/products/crown-wheels-and-gears" },
-      { label: "Support components", href: "/products/hubs-pulleys-and-support-parts" },
+      { label: "Engine pulleys & related hardware", href: "/products/hubs-pulleys-and-support-parts" },
     ],
     icon: Layers3,
   },
@@ -107,9 +107,9 @@ const services: CapabilityService[] = [
     tabLabel: "Fabrication & Assemblies",
     title: "Fabricated parts and sub-assemblies",
     description:
-      "Supports control-linkage, housing, and support-part programs that combine machining with fabrication, coating, or assembly work.",
+      "Supports control-linkage, housing, bracket, and hinge programs that combine machining with fabrication, coating, or assembly work.",
     bullets: [
-      "Used for pedal assemblies, clutch housings, brackets, and support components",
+      "Used for pedal assemblies, clutch housings, brackets, hinges, and mounting hardware",
       "Fits programs that need more than a single machining operation",
       "Can be combined with supplied inputs such as castings, forgings, and sheet metal parts",
     ],
@@ -124,7 +124,7 @@ const services: CapabilityService[] = [
     families: [
       { label: "Lever and pedal systems", href: "/products/lever-and-pedal-systems" },
       { label: "Clutch housings", href: "/products/clutch-housings-and-actuation" },
-      { label: "Support components", href: "/products/hubs-pulleys-and-support-parts" },
+      { label: "Engine pulleys & related hardware", href: "/products/hubs-pulleys-and-support-parts" },
     ],
     icon: Wrench,
   },

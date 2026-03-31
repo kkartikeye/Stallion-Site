@@ -30,7 +30,7 @@ const applicationCards: Array<{
   {
     title: "Bus and passenger transport",
     description:
-      "Supports column assemblies, pedal systems, housings, and support components used across bus programs.",
+      "Supports column assemblies, pedal systems, housings, and hinge hardware used across bus programs.",
     parts: ["Steering assemblies", "Pedal levers", "Clutch housings", "Hinges"],
     icon: BusFront,
   },
@@ -38,7 +38,7 @@ const applicationCards: Array<{
     title: "Rail and transport engineering",
     description:
       "Fits drawing-led machined and fabricated components for transport-linked programs that need dependable batch execution.",
-    parts: ["Machined shafts", "Brackets", "Support parts", "Repeat batches"],
+    parts: ["Machined shafts", "Brackets", "Mounting hardware", "Repeat batches"],
     icon: TrainFront,
   },
   {
@@ -50,10 +50,17 @@ const applicationCards: Array<{
   },
 ];
 
-const processShowcaseImages = [
+const processShowcaseImages: Array<{
+  src: string;
+  alt: string;
+  label: string;
+  fit?: "contain" | "cover";
+  imageClassName?: string;
+  stageClassName?: string;
+}> = [
   {
-    src: "/images/agni-machine.jpg",
-    alt: "Vertical machining centre on the Stallion Auto Parts shop floor",
+    src: "/images/agni-gut.png",
+    alt: "Agni vertical machining centre on the Stallion Auto Parts shop floor with operator standing beside it",
     label: "In-House CNC Machine",
   },
   {
@@ -62,9 +69,9 @@ const processShowcaseImages = [
     label: "Machining In Process",
   },
   {
-    src: "/images/finished crown wheel.png",
-    alt: "Finished crown wheel components",
-    label: "Finished Crown Wheels",
+    src: "/images/heat-processing.jpg",
+    alt: "Industrial heat-processing operation with sparks on a metal component",
+    label: "Heat Processing",
   },
 ];
 
@@ -110,8 +117,19 @@ export default function CapabilitiesPage() {
                   key={image.label}
                   className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm"
                 >
-                  <div className="relative min-h-[220px] bg-slate-100 sm:min-h-[260px] lg:h-full">
-                    <Image src={image.src} alt={image.alt} fill className="object-cover" />
+                  <div
+                    className={`relative min-h-[220px] bg-slate-100 sm:min-h-[260px] lg:h-full ${
+                      image.stageClassName ?? ""
+                    }`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className={`${image.fit === "contain" ? "object-contain" : "object-cover"} ${
+                        image.imageClassName ?? ""
+                      }`}
+                    />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5">
                       <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
                         {image.label}

@@ -22,27 +22,27 @@ export const metadata = createPageMetadata({
 
 const qualityPrinciples = [
   {
-    title: "Built Into The Process",
+    title: "No Surprises at Final Inspection",
     description:
-      "Quality is reinforced through process planning, machining discipline, tooling attention, and production control rather than being treated only as a final-stage sorting activity.",
+      "Quality is enforced at every machining step — not treated as an end-of-line sort. Process planning, tooling discipline, and in-step checks prevent conformity issues before they reach dispatch.",
     icon: Settings,
   },
   {
-    title: "Detailed Test Procedures",
+    title: "Checked Against Customer Drawings",
     description:
-      "Inspection practices are tied to customer drawings, defined checkpoints, and detailed test procedures to support conformity and repeatability.",
+      "Every component is inspected against the customer's stated drawings and defined tolerance requirements. No job leaves without being measured against the specification it was made to.",
     icon: ClipboardCheck,
   },
   {
-    title: "Gauge-Backed Finishing Control",
+    title: "Measured Before Release",
     description:
-      "Grinding, gauging, and closer-tolerance operations support parts where dimensional accuracy and finishing control matter more critically.",
+      "Shafts, ground bores, and precision-turned parts are gauged against customer-specified tolerances before release — not estimated. Closer-tolerance operations are backed by dedicated gauge checks.",
     icon: Gauge,
   },
   {
     title: "Continuous Improvement Habits",
     description:
-      "Shop-floor routines are supported by Kanban thinking, Kaizen habits, and an operating mindset that looks for practical improvements over time.",
+      "Kaizen and Kanban routines on the shop floor reduce variability over time, tighten response to production issues, and build the execution discipline that OEM supply programs depend on.",
     icon: Workflow,
   },
 ];
@@ -85,6 +85,12 @@ const qualityProcessImage = {
   src: "https://images.pexels.com/photos/8956445/pexels-photo-8956445.jpeg?cs=srgb&dl=pexels-daniel-smyth-83914874-8956445.jpg&fm=jpg",
   alt: "Close-up of CNC machining with coolant splashing during operation",
   label: "Process Control In Action",
+};
+
+const cmmInspectionImage = {
+  src: "/images/cmm-machine-measuring-metal-shaft-600nw-2612456095 (1).webp",
+  alt: "CMM probe measuring a metal shaft during inspection",
+  label: "CMM Inspection",
 };
 
 export default function QualityPage() {
@@ -153,9 +159,9 @@ export default function QualityPage() {
           })}
         </div>
 
-        <div className="container-site mt-12">
+        <div className="container-site mt-12 grid gap-5 lg:grid-cols-[1.08fr_0.72fr] lg:items-stretch">
           <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
-            <div className="relative aspect-[4/3] bg-slate-100 sm:aspect-[16/8]">
+            <div className="relative min-h-[320px] bg-slate-100 sm:min-h-[420px] lg:h-full lg:min-h-[560px]">
               <Image
                 src={qualityProcessImage.src}
                 alt={qualityProcessImage.alt}
@@ -165,6 +171,22 @@ export default function QualityPage() {
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5 sm:p-6">
                 <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
                   {qualityProcessImage.label}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
+            <div className="relative min-h-[340px] bg-slate-100 sm:min-h-[440px] lg:min-h-[560px]">
+              <Image
+                src={cmmInspectionImage.src}
+                alt={cmmInspectionImage.alt}
+                fill
+                className="object-cover object-center"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5">
+                <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
+                  {cmmInspectionImage.label}
                 </div>
               </div>
             </div>
