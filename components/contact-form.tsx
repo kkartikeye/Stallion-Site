@@ -84,7 +84,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
 
       <label className="block">
         <span className="mb-2 block text-sm font-medium text-slate-700">
-          Email <span aria-hidden="true" className="text-rose-500">*</span>
+          Email <span className="font-normal text-slate-400">(email or phone)</span>
         </span>
         <input
           name="email"
@@ -101,7 +101,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-2 block text-sm font-medium text-slate-700">
-            Phone / WhatsApp <span aria-hidden="true" className="text-rose-500">*</span>
+            Phone / WhatsApp <span className="font-normal text-slate-400">(email or phone)</span>
           </span>
           <input
             name="phone"

@@ -2,7 +2,9 @@
 
 import { appendFile, mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
+import { headers } from "next/headers";
 import nodemailer from "nodemailer";
+import { checkRateLimit } from "@/lib/rate-limit";
 import { siteConfig } from "@/lib/site";
 
 export type ContactFormState = {
@@ -30,6 +32,24 @@ function getFieldValue(formData: FormData, key: string) {
   const value = formData.get(key);
 
   return typeof value === "string" ? value.trim() : "";
+}
+
+// Strip CR/LF so submitter-controlled values can't be used for email header
+// injection when interpolated into the subject line (defense in depth —
+// nodemailer also encodes headers).
+function sanitizeHeaderValue(value: string) {
+  return value.replace(/[\r\n]+/g, " ").trim();
+}
+
+async function getClientKey() {
+  const headerList = await headers();
+  const forwardedFor = headerList.get("x-forwarded-for");
+  const ip =
+    forwardedFor?.split(",")[0]?.trim() ||
+    headerList.get("x-real-ip")?.trim() ||
+    "unknown";
+
+  return `contact:${ip}`;
 }
 
 function getMailTransport() {
@@ -97,12 +117,13 @@ async function sendSubmissionEmail(payload: ContactSubmissionPayload) {
     || defaultContactRecipient;
   const to =
     process.env.CONTACT_FORM_TO_EMAIL?.trim() || defaultContactRecipient;
-  const inquiryLabel = payload.inquiryType || "Website Inquiry";
+  const inquiryLabel = sanitizeHeaderValue(payload.inquiryType || "Website Inquiry");
+  const company = sanitizeHeaderValue(payload.company);
 
   await transport.sendMail({
     from,
     replyTo: payload.email || undefined,
-    subject: `[Stallion Site] ${inquiryLabel} from ${payload.company}`,
+    subject: `[Stallion Site] ${inquiryLabel} from ${company}`,
     text: buildSubmissionEmailText(payload),
     to,
   });
@@ -140,6 +161,15 @@ export async function submitContactForm(
 
   if (website) {
     return initialState;
+  }
+
+  const rate = checkRateLimit(await getClientKey());
+  if (!rate.allowed) {
+    return {
+      status: "error",
+      message:
+        "You've sent several inquiries in a short time. Please wait a moment and try again.",
+    };
   }
 
   if (!name || !company || !message) {
