@@ -1,13 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   background: #ffffff;
   color: #09111f;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 button,
@@ -15,6 +25,28 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+::selection {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* Visible, consistent keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid #0f172a;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 .container-site {
@@ -33,6 +65,77 @@ select {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* --- Micro-interactions ------------------------------------------------ */
+
+/* Card lift used across product/capability grids */
+.card-lift {
+  transition:
+    transform 0.35s var(--ease-out-soft),
+    box-shadow 0.35s var(--ease-out-soft),
+    border-color 0.35s var(--ease-out-soft);
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -20px rgba(15, 23, 42, 0.22);
+  border-color: rgba(100, 116, 139, 0.45);
+}
+
+@media (hover: none) {
+  .card-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Image zoom inside cards (pair with `group` on the card) */
+.card-zoom-image {
+  transition: transform 0.6s var(--ease-out-soft);
+}
+
+.group:hover .card-zoom-image {
+  transform: scale(1.045);
+}
+
+/* Arrow nudge on link/button hover (pair with `group`) */
+.arrow-nudge {
+  transition: transform 0.25s var(--ease-out-soft);
+}
+
+.group:hover .arrow-nudge,
+a:hover > .arrow-nudge,
+button:hover > .arrow-nudge {
+  transform: translateX(3px);
+}
+
+/* Animated underline for inline links */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s var(--ease-out-soft);
+}
+
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+/* Button press feedback */
+.btn-press {
+  transition:
+    transform 0.2s var(--ease-out-soft),
+    background-color 0.2s var(--ease-out-soft),
+    border-color 0.2s var(--ease-out-soft),
+    box-shadow 0.2s var(--ease-out-soft);
+}
+
+.btn-press:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* --- Hero animations ---------------------------------------------------- */
 
 @keyframes hero-fade-up {
   from {
@@ -113,7 +216,28 @@ select {
   animation: hero-image-pan 16s ease-in-out infinite;
 }
 
+/* Success panel entrance */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.45s var(--ease-out-soft) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .hero-fade-up,
   .hero-fade-up-delay-1,
   .hero-fade-up-delay-2,
@@ -121,7 +245,16 @@ select {
   .hero-fade-up-delay-4,
   .hero-float,
   .hero-glow,
-  .hero-image-pan {
+  .hero-image-pan,
+  .rise-in {
     animation: none !important;
+  }
+
+  .card-lift,
+  .card-zoom-image,
+  .arrow-nudge,
+  .link-underline,
+  .btn-press {
+    transition: none !important;
   }
 }

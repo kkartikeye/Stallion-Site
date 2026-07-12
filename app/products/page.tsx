@@ -2,9 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BusFront, Factory, TrainFront, Truck } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
+import { ProductFinder, type FinderProduct } from "@/components/product-finder";
 import { SectionHeading } from "@/components/section-heading";
 import { createPageMetadata } from "@/lib/metadata";
-import { productFamilies } from "@/lib/product-families";
+import { getProductSlug, productFamilies } from "@/lib/product-families";
 
 export const metadata = createPageMetadata({
   title: "Product Families",
@@ -56,11 +57,22 @@ const pageSignals = [
   },
 ];
 
+const finderProducts: FinderProduct[] = productFamilies.flatMap((family) =>
+  family.details.map((product) => ({
+    name: product.name,
+    familyEyebrow: family.eyebrow,
+    familySlug: family.slug,
+    productSlug: getProductSlug(product.name),
+    imageSrc: product.imageSrc,
+  })),
+);
+
 export default function ProductsPage() {
   return (
     <>
       <PageHero
         title="Products"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Products" }]}
         description="Representative product families across steering systems, lever assemblies, crown wheels, clutch-side parts, engine pulleys, related hardware, and CNC-machined components for OEM and engineering programs."
         imageSrc="/images/Steering-Column-Assemblies..jpg"
         imageAlt="Representative steering column assemblies manufactured by Stallion Auto Parts"
@@ -138,6 +150,10 @@ export default function ProductsPage() {
 
       <section className="bg-slate-50 section-space">
         <div className="container-site">
+          <div className="mb-12">
+            <ProductFinder products={finderProducts} />
+          </div>
+
           <SectionHeading
             eyebrow="Product Families"
             title="Choose a product family to see the detailed products, specs, and representative images."
@@ -148,14 +164,15 @@ export default function ProductsPage() {
             {productFamilies.map((family) => (
               <div
                 key={family.slug}
-                className="group overflow-hidden rounded-[1.9rem] border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                className="group card-lift overflow-hidden rounded-[1.9rem] border border-slate-200 bg-white shadow-sm"
               >
-                <div className="relative aspect-[16/10] bg-slate-100">
+                <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                   <Image
                     src={family.heroImageSrc}
                     alt={family.title}
                     fill
-                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    className="card-zoom-image object-cover"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5">
                     <div className="inline-flex items-center rounded-full border border-white/15 bg-slate-950/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-100 backdrop-blur-sm">
@@ -221,10 +238,10 @@ export default function ProductsPage() {
                     </div>
                     <Link
                       href={`/products/${family.slug}`}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition group-hover:-translate-y-0.5 sm:w-auto"
+                      className="btn-press inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition sm:w-auto"
                     >
                       View Product Family
-                      <ArrowRight className="h-4 w-4" />
+                      <ArrowRight className="arrow-nudge h-4 w-4" />
                     </Link>
                   </div>
                 </div>

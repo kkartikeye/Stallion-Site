@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, PhoneCall } from "lucide-react";
+import { Breadcrumbs, type BreadcrumbItem } from "@/components/breadcrumbs";
 import { brandSignals, siteConfig } from "@/lib/site";
 
 type HeroAction = {
@@ -12,6 +13,7 @@ type HeroAction = {
 type PageHeroProps = {
   title: string;
   description: string;
+  breadcrumbs?: BreadcrumbItem[];
   imageSrc?: string;
   imageAlt?: string;
   imageContainerClassName?: string;
@@ -67,6 +69,7 @@ function HeroActionLink({
 export function PageHero({
   title,
   description,
+  breadcrumbs,
   imageSrc,
   imageAlt,
   imageContainerClassName,
@@ -98,6 +101,12 @@ export function PageHero({
         }`}
       >
         <div>
+          {breadcrumbs && breadcrumbs.length > 0 ? (
+            <div className="hero-fade-up mb-5">
+              <Breadcrumbs items={breadcrumbs} tone="dark" />
+            </div>
+          ) : null}
+
           <h1 className="hero-fade-up hero-fade-up-delay-1 max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
             {title}
           </h1>
@@ -149,7 +158,9 @@ export function PageHero({
                   src={imageSrc}
                   alt={imageAlt ?? title}
                   fill
+                  priority
                   quality={imageQuality}
+                  sizes="(max-width: 1024px) 100vw, 55vw"
                   className={`hero-image-pan ${imageClassName ?? "object-cover"}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/78 via-slate-950/18 to-transparent" />

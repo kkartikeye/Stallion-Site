@@ -1,12 +1,32 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import Link from "next/link";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
+import {
+  ArrowRight,
+  CheckCircle2,
+  CircleAlert,
+  Loader2,
+  Mail,
+  PhoneCall,
+} from "lucide-react";
 import {
   submitContactForm,
   type ContactFormState,
 } from "@/app/contact/actions";
 import { productFamilies } from "@/lib/product-families";
+import { siteConfig } from "@/lib/site";
+import {
+  type ContactField,
+  type ContactFieldErrors,
+  type Result,
+  validateCompany,
+  validateEmail,
+  validateMessage,
+  validateName,
+  validatePhone,
+} from "@/lib/validation";
 
 const inquiryTypes = [
   "Request a Quote",
@@ -31,6 +51,30 @@ type ContactFormProps = {
   };
 };
 
+const fieldBaseClass =
+  "w-full rounded-2xl border px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900";
+
+function fieldClass(hasError: boolean) {
+  return `${fieldBaseClass} ${
+    hasError
+      ? "border-rose-400 bg-rose-50/40 focus:border-rose-500"
+      : "border-slate-300"
+  }`;
+}
+
+function FieldError({ id, message }: { id: string; message?: string }) {
+  if (!message) {
+    return null;
+  }
+
+  return (
+    <p id={id} role="alert" className="mt-2 flex items-start gap-1.5 text-sm text-rose-600">
+      <CircleAlert className="mt-0.5 h-3.5 w-3.5 shrink-0" />
+      {message}
+    </p>
+  );
+}
+
 function SubmitButton() {
   const { pending } = useFormStatus();
 
@@ -38,10 +82,79 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="w-full rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+      className="btn-press inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
     >
-      {pending ? "Sending..." : "Send Inquiry"}
+      {pending ? (
+        <>
+          <Loader2 className="h-4 w-4 animate-spin" />
+          Sending...
+        </>
+      ) : (
+        "Send Inquiry"
+      )}
     </button>
+  );
+}
+
+function SuccessPanel({
+  message,
+  reference,
+}: {
+  message: string;
+  reference: string;
+}) {
+  return (
+    <div className="rise-in mt-6 rounded-[1.5rem] border border-emerald-200 bg-emerald-50/60 p-6 sm:p-8">
+      <div className="flex items-start gap-4">
+        <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-600 text-white">
+          <CheckCircle2 className="h-5 w-5" />
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-emerald-950">
+            Inquiry received
+          </h3>
+          <p className="mt-1 text-sm leading-6 text-emerald-900/80">{message}</p>
+          <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-emerald-700">
+            Reference: {reference}
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-6 border-t border-emerald-200/70 pt-5">
+        <div className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-800">
+          What happens next
+        </div>
+        <ol className="mt-3 space-y-2 text-sm leading-6 text-emerald-950/80">
+          <li>1. The team reviews your requirement and capability fit.</li>
+          <li>2. You hear back — typically within 1 business day.</li>
+          <li>3. The conversation moves to quoting or feasibility.</li>
+        </ol>
+
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a
+            href={`tel:${siteConfig.phoneHref}`}
+            className="btn-press inline-flex items-center justify-center gap-2 rounded-2xl bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-emerald-800"
+          >
+            <PhoneCall className="h-4 w-4" />
+            Call for urgent requirements
+          </a>
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="btn-press inline-flex items-center justify-center gap-2 rounded-2xl border border-emerald-300 bg-white px-4 py-2.5 text-sm font-medium text-emerald-900 transition hover:bg-emerald-50"
+          >
+            <Mail className="h-4 w-4" />
+            Email a drawing
+          </a>
+          <Link
+            href="/products"
+            className="group inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2.5 text-sm font-medium text-emerald-900 transition hover:bg-emerald-100/60"
+          >
+            Browse product families
+            <ArrowRight className="arrow-nudge h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -49,9 +162,48 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
   const [state, formAction] = useActionState(submitContactForm, initialState);
   const [emailValue, setEmailValue] = useState("");
   const [phoneValue, setPhoneValue] = useState(defaultValues?.phone ?? "");
+  const [clientErrors, setClientErrors] = useState<ContactFieldErrors>({});
+  const summaryRef = useRef<HTMLDivElement>(null);
+
+  // Merge server-reported field errors (authoritative) over client ones.
+  const serverErrors =
+    state.status === "error" ? (state.fieldErrors ?? {}) : {};
+  const errors: ContactFieldErrors = { ...clientErrors, ...serverErrors };
+
+  useEffect(() => {
+    if (state.status === "error") {
+      summaryRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [state]);
+
+  if (state.status === "success") {
+    return <SuccessPanel message={state.message} reference={state.reference} />;
+  }
+
+  const setFieldError = (field: ContactField, error: string | undefined) => {
+    setClientErrors((prev) => {
+      const next = { ...prev };
+
+      if (error) {
+        next[field] = error;
+      } else {
+        delete next[field];
+      }
+
+      return next;
+    });
+  };
+
+  const validateOnBlur =
+    (field: ContactField, validator: (value: string) => Result<string, string>) =>
+    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const result = validator(event.target.value);
+
+      setFieldError(field, result.ok ? undefined : result.error);
+    };
 
   return (
-    <form action={formAction} className="mt-6 space-y-4">
+    <form action={formAction} className="mt-6 space-y-4" noValidate>
       <p className="text-xs text-slate-500">Fields marked with * are required.</p>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -61,11 +213,15 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
           </span>
           <input
             name="name"
-            className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+            className={fieldClass(Boolean(errors.name))}
             placeholder="Your Name"
             autoComplete="name"
             required
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            onBlur={validateOnBlur("name", validateName)}
           />
+          <FieldError id="name-error" message={errors.name} />
         </label>
 
         <label className="block">
@@ -74,11 +230,15 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
           </span>
           <input
             name="company"
-            className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+            className={fieldClass(Boolean(errors.company))}
             placeholder="Company Name"
             autoComplete="organization"
             required
+            aria-invalid={Boolean(errors.company)}
+            aria-describedby={errors.company ? "company-error" : undefined}
+            onBlur={validateOnBlur("company", validateCompany)}
           />
+          <FieldError id="company-error" message={errors.company} />
         </label>
       </div>
 
@@ -88,14 +248,34 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
         </span>
         <input
           name="email"
-          className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+          className={fieldClass(Boolean(errors.email))}
           placeholder="Email"
           autoComplete="email"
           type="email"
           value={emailValue}
-          onChange={(event) => setEmailValue(event.target.value)}
+          onChange={(event) => {
+            setEmailValue(event.target.value);
+
+            if (errors.email) {
+              const result = validateEmail(event.target.value);
+
+              setFieldError("email", result.ok ? undefined : result.error);
+            }
+          }}
+          onBlur={(event) => {
+            const result = validateEmail(event.target.value);
+
+            setFieldError("email", result.ok ? undefined : result.error);
+
+            if (result.ok && event.target.value.trim()) {
+              setFieldError("phone", undefined);
+            }
+          }}
           required={!phoneValue.trim()}
+          aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? "email-error" : undefined}
         />
+        <FieldError id="email-error" message={errors.email} />
       </label>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -105,13 +285,33 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
           </span>
           <input
             name="phone"
-            className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+            className={fieldClass(Boolean(errors.phone))}
             placeholder="+91 ..."
             autoComplete="tel"
             value={phoneValue}
-            onChange={(event) => setPhoneValue(event.target.value)}
+            onChange={(event) => {
+              setPhoneValue(event.target.value);
+
+              if (errors.phone) {
+                const result = validatePhone(event.target.value);
+
+                setFieldError("phone", result.ok ? undefined : result.error);
+              }
+            }}
+            onBlur={(event) => {
+              const result = validatePhone(event.target.value);
+
+              setFieldError("phone", result.ok ? undefined : result.error);
+
+              if (result.ok && event.target.value.trim()) {
+                setFieldError("email", undefined);
+              }
+            }}
             required={!emailValue.trim()}
+            aria-invalid={Boolean(errors.phone)}
+            aria-describedby={errors.phone ? "phone-error" : undefined}
           />
+          <FieldError id="phone-error" message={errors.phone} />
         </label>
 
         <label className="block">
@@ -121,7 +321,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
           <select
             name="inquiryType"
             defaultValue={defaultValues?.inquiryType ?? ""}
-            className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+            className={`${fieldBaseClass} border-slate-300 bg-white`}
           >
             <option value="">Select inquiry type</option>
             {inquiryTypes.map((item) => (
@@ -145,7 +345,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
           <select
             name="productFamily"
             defaultValue={defaultValues?.productFamily ?? ""}
-            className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+            className={`${fieldBaseClass} border-slate-300 bg-white`}
           >
             <option value="">Select product family</option>
             {productFamilies.map((family) => (
@@ -163,7 +363,7 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
           </span>
           <input
             name="quantity"
-            className="w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+            className={`${fieldBaseClass} border-slate-300`}
             placeholder="Optional"
             defaultValue={defaultValues?.quantity}
           />
@@ -185,23 +385,26 @@ export function ContactForm({ defaultValues }: ContactFormProps) {
         </span>
         <textarea
           name="message"
-          className="min-h-[180px] w-full rounded-2xl border border-slate-300 px-4 py-3 text-slate-900 outline-none transition focus:border-slate-900"
+          className={`min-h-[180px] ${fieldClass(Boolean(errors.message))}`}
           placeholder="Tell us about your requirement, expected volumes, component type, drawing reference, material, or delivery needs"
           defaultValue={defaultValues?.message}
           required
+          aria-invalid={Boolean(errors.message)}
+          aria-describedby={errors.message ? "message-error" : undefined}
+          onBlur={validateOnBlur("message", validateMessage)}
         />
+        <FieldError id="message-error" message={errors.message} />
       </label>
 
-      {state.message ? (
-        <p
-          className={`rounded-2xl px-4 py-3 text-sm ${
-            state.status === "success"
-              ? "bg-emerald-50 text-emerald-800"
-              : "bg-red-50 text-red-700"
-          }`}
+      {state.status === "error" ? (
+        <div
+          ref={summaryRef}
+          role="alert"
+          className="flex items-start gap-3 rounded-2xl bg-red-50 px-4 py-3 text-sm text-red-700"
         >
+          <CircleAlert className="mt-0.5 h-4 w-4 shrink-0" />
           {state.message}
-        </p>
+        </div>
       ) : null}
 
       <SubmitButton />

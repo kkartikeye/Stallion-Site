@@ -96,6 +96,7 @@ export default function HomePage() {
               alt="Stallion Auto Parts manufacturing facility"
               fill
               priority
+              sizes="46vw"
               className="object-cover opacity-[0.14] grayscale"
             />
             <div className="absolute inset-0 bg-gradient-to-l from-slate-950/20 via-slate-950/55 to-slate-950" />
@@ -151,6 +152,8 @@ export default function HomePage() {
                     src="/images/machine-shop.png"
                     alt="Machine shop at Stallion Auto Parts"
                     fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                     className="hero-image-pan object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
@@ -216,6 +219,7 @@ export default function HomePage() {
                   src="/images/stallion-entrance.png"
                   alt="Entrance view of Stallion Auto Parts facility"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 45vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent p-5">
@@ -297,7 +301,7 @@ export default function HomePage() {
               return (
                 <div
                   key={capability.title}
-                  className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                  className="card-lift rounded-3xl border border-slate-200 bg-white p-7 shadow-sm"
                 >
                   <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900 text-white">
                     <Icon className="h-6 w-6" strokeWidth={1.8} />
@@ -327,14 +331,15 @@ export default function HomePage() {
             {products.map((product) => (
               <div
                 key={product.title}
-                className="overflow-hidden rounded-3xl border border-slate-200 bg-white transition hover:-translate-y-1 hover:shadow-md"
+                className="group card-lift overflow-hidden rounded-3xl border border-slate-200 bg-white"
               >
-                <div className="relative aspect-[4/3] bg-slate-100">
+                <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                   <Image
                     src={product.imageSrc}
                     alt={product.title}
                     fill
-                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="card-zoom-image object-cover"
                   />
                 </div>
                 <div className="p-6">

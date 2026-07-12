@@ -60,6 +60,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <>
       <PageHero
         title={product.name}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Products", href: "/products" },
+          { label: family.eyebrow, href: `/products/${family.slug}` },
+          { label: product.name },
+        ]}
         description={product.description}
         imageSrc={product.imageSrc}
         imageAlt={product.imageAlt ?? product.name}
@@ -110,6 +116,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   src={product.imageSrc}
                   alt={product.imageAlt ?? product.name}
                   fill
+                  sizes="(max-width: 1280px) 100vw, 1152px"
                   className="object-cover"
                 />
               </div>

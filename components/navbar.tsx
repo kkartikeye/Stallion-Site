@@ -126,7 +126,7 @@ export function Navbar() {
             <div className="hidden lg:block">
               <Link
                 href="/contact"
-                className="rounded-2xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 xl:px-7 xl:text-base"
+                className="btn-press rounded-2xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 xl:px-7 xl:text-base"
               >
                 Request a Quote
               </Link>

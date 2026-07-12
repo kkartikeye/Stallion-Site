@@ -225,6 +225,11 @@ export default async function ProductFamilyPage({ params }: ProductFamilyPagePro
     <>
       <PageHero
         title={family.title}
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Products", href: "/products" },
+          { label: family.eyebrow },
+        ]}
         description={family.heroDescription}
         imageSrc={family.heroImageSrc}
         imageAlt={family.heroLegend}
@@ -314,15 +319,16 @@ export default async function ProductFamilyPage({ params }: ProductFamilyPagePro
               return (
                 <div
                   key={item.name}
-                  className="flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-slate-200 bg-white shadow-sm"
+                  className="group card-lift flex h-full flex-col overflow-hidden rounded-[1.7rem] border border-slate-200 bg-white shadow-sm"
                 >
                   {item.imageSrc ? (
-                    <div className="relative aspect-[4/3] bg-slate-100">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                       <Image
                         src={item.imageSrc}
                         alt={item.imageAlt ?? item.name}
                         fill
-                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                        className="card-zoom-image object-cover"
                       />
                     </div>
                   ) : null}

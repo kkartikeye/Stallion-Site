@@ -6,26 +6,30 @@ import { headers } from "next/headers";
 import nodemailer from "nodemailer";
 import { checkRateLimit } from "@/lib/rate-limit";
 import { siteConfig } from "@/lib/site";
+import {
+  type ContactFieldErrors,
+  type ContactSubmission,
+  validateContactSubmission,
+} from "@/lib/validation";
 
-export type ContactFormState = {
-  status: "idle" | "success" | "error";
-  message?: string;
-};
+export type ContactFormState =
+  | { status: "idle" }
+  | { status: "success"; message: string; reference: string }
+  | { status: "error"; message: string; fieldErrors?: ContactFieldErrors };
 
-type ContactSubmissionPayload = {
-  company: string;
-  email: string;
-  inquiryType: string;
-  message: string;
-  name: string;
-  phone: string;
-  productFamily: string;
-  quantity: string;
-};
+type ContactSubmissionPayload = ContactSubmission;
 
 const initialState: ContactFormState = {
   status: "idle",
 };
+
+function createSubmissionReference() {
+  const now = new Date();
+  const stamp = now.toISOString().slice(2, 10).replace(/-/g, "");
+  const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+
+  return `SAP-${stamp}-${suffix}`;
+}
 const defaultContactRecipient = "stallionauto1@gmail.com";
 
 function getFieldValue(formData: FormData, key: string) {
@@ -172,29 +176,7 @@ export async function submitContactForm(
     };
   }
 
-  if (!name || !company || !message) {
-    return {
-      status: "error",
-      message: "Please complete all required fields before submitting your inquiry.",
-    };
-  }
-
-  if (!email && !phone) {
-    return {
-      status: "error",
-      message: "Please provide either an email address or a phone / WhatsApp number.",
-    };
-  }
-
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (email && !emailPattern.test(email)) {
-    return {
-      status: "error",
-      message: "Please enter a valid email address.",
-    };
-  }
-
-  const payload = {
+  const validated = validateContactSubmission({
     company,
     email,
     inquiryType,
@@ -203,7 +185,17 @@ export async function submitContactForm(
     phone,
     productFamily,
     quantity,
-  };
+  });
+
+  if (!validated.ok) {
+    return {
+      status: "error",
+      message: "Please review the highlighted fields and try again.",
+      fieldErrors: validated.error,
+    };
+  }
+
+  const payload = validated.value;
 
   let delivered = false;
   let hasDeliveryTarget = false;
@@ -253,6 +245,7 @@ export async function submitContactForm(
       status: "success",
       message:
         "Your inquiry has been sent. Our team will get back to you shortly.",
+      reference: createSubmissionReference(),
     };
   }
 
@@ -271,6 +264,7 @@ export async function submitContactForm(
       status: "success",
       message:
         "Inquiry captured locally for development. Configure SMTP or CONTACT_FORM_WEBHOOK_URL to route submissions in production.",
+      reference: createSubmissionReference(),
     };
   }
 

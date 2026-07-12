@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight, BadgeCheck, Factory, Mail, MapPin, PhoneCall } from "lucide-react";
+import { productFamilies } from "@/lib/product-families";
 import { brandSignals, navLinks, siteConfig } from "@/lib/site";
 
 export function Footer() {
@@ -55,7 +56,7 @@ export function Footer() {
           </div>
         ) : null}
 
-        <div className={`${isHomePage ? "mt-0" : "mt-10"} grid gap-8 md:grid-cols-[0.95fr_0.75fr_0.9fr_1.15fr] md:gap-10`}>
+        <div className={`${isHomePage ? "mt-0" : "mt-10"} grid gap-8 sm:grid-cols-2 md:gap-10 xl:grid-cols-[1fr_0.6fr_0.95fr_0.9fr_1.15fr]`}>
           <div>
             <div className="flex items-center gap-3">
               <Image
@@ -81,9 +82,26 @@ export function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm text-slate-700 transition hover:text-slate-950"
+                  className="link-underline w-fit text-sm text-slate-700 transition hover:text-slate-950"
                 >
                   {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
+              Product Families
+            </div>
+            <div className="mt-4 flex flex-col gap-3">
+              {productFamilies.map((family) => (
+                <Link
+                  key={family.slug}
+                  href={`/products/${family.slug}`}
+                  className="link-underline w-fit text-sm text-slate-700 transition hover:text-slate-950"
+                >
+                  {family.eyebrow}
                 </Link>
               ))}
             </div>
@@ -166,12 +184,22 @@ export function Footer() {
 
               <Link
                 href="/contact"
-                className="mt-5 inline-flex items-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
+                className="btn-press mt-5 inline-flex items-center gap-2 rounded-2xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
               >
                 Request a Quote
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-3 border-t border-slate-200 pt-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            © {new Date().getFullYear()} {siteConfig.legalName} All rights reserved.
+          </div>
+          <div className="flex flex-wrap gap-x-5 gap-y-1">
+            <span>GST: {siteConfig.gstNumber}</span>
+            <span>Lucknow, India</span>
           </div>
         </div>
       </div>
